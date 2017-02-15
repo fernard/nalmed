@@ -1,0 +1,124 @@
+.contact-background {
+
+  width: 100%;
+  background-color: map-get($mainColors, dark-blue);
+}
+
+/*form */
+form {
+
+  @include formPlaceholder;
+  margin-top: 2rem;
+  display: block;
+  input, textarea {
+
+    margin-bottom: 1.5rem;
+
+}
+  input {
+
+    width: 70%;
+  }
+
+  textarea {
+    width: 100%;
+  }
+
+  input[type="text"],input[name="email"], textarea {
+
+  background: transparent;
+  border: 2px solid white;
+  font-size: 2rem;
+  color: #a1b8ca;
+  padding: 0.3rem 0;
+  border-radius: 3px;
+
+}
+
+  input[type="button"] {
+
+    background-color: map-get($mainColors,sea-blue);
+    font-weight: 700;
+    border: none;
+    border-radius: 3px;
+    width: 40%;
+    font-size: 2.1rem;
+    color: white;
+    padding: 0.5rem 0;
+  }
+
+}
+
+/*contact-info */
+
+.contact-wrapper {
+
+  border: 1px solid red;
+  display: flex;
+  flex-flow: row wrap;
+  flex-basis: 50%;
+  color: white;
+  font-weight: 500;
+  margin-top: 2rem;
+
+  .contact-info {
+
+    border: 1px solid blue;
+    width: 50%;
+    text-align: center;
+
+    &:nth-of-type(2) {
+
+      .contact-thumb {
+
+        background-position: -54px 0;
+      }
+    }
+    &:last-of-type {
+
+
+      border: 1px solid green;
+      margin-left: 25%;
+
+      .contact-thumb {
+
+        background-position: -107px 0;
+      }
+    }
+
+
+    .contact-thumb {
+      width: 52px;
+      height: 52px;
+      background-image: url('../img/contact.png');
+      background-repeat: no-repeat;
+      background-position: 0;
+      margin: 0 auto;
+      border: 1px solid red;
+    }
+  }
+
+  p {
+
+    line-height: 3.5rem;
+    a {
+
+      color: white;
+      border-top: 2px solid rgba(255,255,255,0);
+      border-bottom: 2px solid rgba(255,255,255,0);
+      padding: 2rem 0;
+      transition: all 0.3s ease-out;
+
+      &:hover {
+
+        padding: 0.3rem 0;
+        border-top: 2px solid rgba(255,255,255,0.6);
+        border-bottom: 2px solid rgba(255,255,255,0.6);
+
+      }
+    }
+
+
+  }
+
+}

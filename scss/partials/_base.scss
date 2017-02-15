@@ -1,0 +1,172 @@
+h2 {
+    text-align: center;
+    font-weight: 800;
+    color: map-get($mainColors, main-font);
+    font-size: 4.5rem;
+    border: 1px solid red;
+    display: block;
+    margin-bottom: 5rem;
+
+    &::after {
+        content: '';
+        display: block;
+        width: 60%;
+        margin: 0 auto;
+        background-color: map-get($mainColors, dark-blue);
+        height: 3px;
+    }
+}
+
+h3 {
+    font-weight: 700;
+    color: map-get($mainColors, main-font);
+    font-size: 2rem;
+    border: 1px solid red;
+    display: inline-block;
+    margin: 3rem auto;
+
+    &::after {
+        content: '';
+        display: block;
+        width: 80%;
+        margin: 0 auto;
+        background-color: map-get($mainColors, sea-blue);
+        height: 3px;
+    }
+}
+/*about-us*/
+#about-us {
+    .row {
+        .col-lg-4 {
+            &:nth-of-type(2) {
+                .about-us-col {
+                    .mini-img {
+                        background-position: -120px 25px;
+                    }
+                }
+            }
+
+            &:nth-of-type(3) {
+                .about-us-col {
+                    .mini-img {
+                        background-position: -250px 25px;
+                    }
+                }
+            }
+        }
+    }
+
+    .about-us-col {
+        text-align: center;
+
+        &:hover .mini-img {
+          border-radius: 0;
+
+        }
+        .mini-img {
+            @include smallImage;
+            border: 5px solid map-get($mainColors, sea-blue);
+            background-image: url('../img/about-us.png');
+            background-repeat: no-repeat;
+            background-position: 15px 25px;
+            transition: all 0.5s;
+        }
+
+        ul {
+            list-style-type: none;
+            border: 1px solid blue;
+
+            li {
+                width: 80%;
+                text-align: center;
+                margin: 0 auto;
+            }
+        }
+    }
+}
+/*Who-we-help*/
+.help-background {
+    width: 100%;
+    background-color: map-get($mainColors, sea-blue);
+}
+
+.help-col {
+    border: 2px solid white;
+    margin: 1.5rem 0;
+    color: white;
+    height: 50rem;
+
+    @media (max-width: 992px) {
+        height: auto;
+    }
+
+  .help-header {
+        font-weight: 800;
+        display: block;
+        background-color: white;
+        padding: 2rem 0 2rem 2rem;
+        position: relative;
+        margin: 0 auto 2rem;
+        text-align: center;
+
+        &::before {
+            content: '';
+            display: block;
+            width: 34px;
+            height: 34px;
+            background-image: url('../img/cross.png');
+            background-size: contain;
+            position: absolute;
+            left: 2%;
+            top: 25%;
+            transition: all 1s;
+        }
+
+        &::after {
+            display: none;
+        }
+    }
+
+    &:hover .help-header::before {
+
+      transform: rotate(90deg);
+    }
+
+    ul {
+        margin: 0 auto;
+        border: 1px solid blue;
+        list-style: none;
+        line-height: 3rem;
+
+        li {
+            text-align: center;
+            padding: 0.5rem;
+        }
+    }
+}
+
+
+/*Team-members*/
+.photo {
+    @include smallImage;
+    background-image: url('../img/iwona-tomasz.png');
+    background-repeat: no-repeat;
+    background-position: 0;
+    background-size: cover;
+}
+
+#team {
+    .team-member-col {
+        text-align: center;
+    }
+
+    .col-lg-6 {
+        &:nth-of-type(2) {
+            .team-member-col {
+                .photo {
+                    background-position: 100%;
+                }
+            }
+        }
+    }
+}
