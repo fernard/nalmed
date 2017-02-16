@@ -1,11 +1,15 @@
 h2 {
     text-align: center;
-    font-weight: 800;
+    @include fontProp(4.5rem, 800);
     color: map-get($mainColors, main-font);
-    font-size: 4.5rem;
     border: 1px solid red;
     display: block;
     margin-bottom: 5rem;
+
+    @include breakpoints($media-xs) {
+
+      font-size: 3.5rem;
+    }
 
     &::after {
         content: '';
@@ -18,12 +22,12 @@ h2 {
 }
 
 h3 {
-    font-weight: 700;
+    @include fontProp(2rem, 700);
     color: map-get($mainColors, main-font);
-    font-size: 2rem;
     border: 1px solid red;
     display: inline-block;
     margin: 3rem auto;
+    text-align: center;
 
     &::after {
         content: '';
@@ -60,9 +64,9 @@ h3 {
         text-align: center;
 
         &:hover .mini-img {
-          border-radius: 0;
-
+            border-radius: 0;
         }
+
         .mini-img {
             @include smallImage;
             border: 5px solid map-get($mainColors, sea-blue);
@@ -73,13 +77,16 @@ h3 {
         }
 
         ul {
-            list-style-type: none;
             border: 1px solid blue;
 
             li {
                 width: 80%;
                 text-align: center;
                 margin: 0 auto;
+
+                &::before {
+                    @include listBullet(map-get($mainColors, sea-blue));
+                }
             }
         }
     }
@@ -91,16 +98,15 @@ h3 {
 }
 
 .help-col {
-    border: 2px solid white;
+    border: 3px solid white;
     margin: 1.5rem 0;
     color: white;
-    height: 50rem;
-
-    @media (max-width: 992px) {
+    height: 550px;
+    @media (max-width: 1200px) {
         height: auto;
     }
 
-  .help-header {
+    .help-header {
         font-weight: 800;
         display: block;
         background-color: white;
@@ -108,6 +114,12 @@ h3 {
         position: relative;
         margin: 0 auto 2rem;
         text-align: center;
+        border: 1px solid blue;
+
+        @include breakpoints($media-xs) {
+
+          font-size: 1.8rem;
+        }
 
         &::before {
             content: '';
@@ -120,6 +132,13 @@ h3 {
             left: 2%;
             top: 25%;
             transition: all 1s;
+
+            @include breakpoints($media-xs) {
+
+              width: 25px;
+              height: 25px;
+              top: 30%;
+            }
         }
 
         &::after {
@@ -128,24 +147,24 @@ h3 {
     }
 
     &:hover .help-header::before {
-
-      transform: rotate(90deg);
+        transform: rotate(90deg);
     }
 
     ul {
         margin: 0 auto;
         border: 1px solid blue;
-        list-style: none;
         line-height: 3rem;
 
         li {
             text-align: center;
-            padding: 0.5rem;
+            padding: 0.5rem 1.5rem;
+
+            &::before {
+                @include listBullet(white);
+            }
         }
     }
 }
-
-
 /*Team-members*/
 .photo {
     @include smallImage;
@@ -160,7 +179,7 @@ h3 {
         text-align: center;
     }
 
-    .col-lg-6 {
+    .col-md-4 {
         &:nth-of-type(2) {
             .team-member-col {
                 .photo {

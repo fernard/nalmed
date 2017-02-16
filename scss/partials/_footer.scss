@@ -38,11 +38,10 @@ form {
   input[type="button"] {
 
     background-color: map-get($mainColors,sea-blue);
-    font-weight: 700;
+    @include fontProp(2.1rem, 700);
     border: none;
     border-radius: 3px;
     width: 40%;
-    font-size: 2.1rem;
     color: white;
     padding: 0.5rem 0;
   }
@@ -56,17 +55,26 @@ form {
   border: 1px solid red;
   display: flex;
   flex-flow: row wrap;
-  flex-basis: 50%;
   color: white;
   font-weight: 500;
   margin-top: 2rem;
+
+  @include breakpoints($media-xs) {
+
+    flex-flow: column nowrap;
+
+  };
 
   .contact-info {
 
     border: 1px solid blue;
     width: 50%;
     text-align: center;
+    @include breakpoints($media-xs) {
 
+      width: 100%;
+
+    };
     &:nth-of-type(2) {
 
       .contact-thumb {
@@ -79,6 +87,10 @@ form {
 
       border: 1px solid green;
       margin-left: 25%;
+      @include breakpoints($media-xs) {
+
+        margin-left: 0;
+      };
 
       .contact-thumb {
 

@@ -1,0 +1,228 @@
+/*Nalmed therapy*/
+.therapy-desc {
+    margin-bottom: 50px;
+
+    p {
+        text-align: left;
+
+        span {
+
+          color: map-get($mainColors, dark-blue);
+          font-weight: 700;
+        }
+    }
+}
+.molecule-wrapper {
+
+  @include breakpoints($media-md) {
+
+    margin-bottom: 5rem;
+  }
+}
+.molecule {
+    width: 100%;
+    height: 350px;
+    border: 1px solid red;
+    position: relative;
+
+    img {
+        animation: molecules 4s ease-in-out 1s infinite alternate;
+
+    }
+}
+
+.numbers {
+    @include fontProp(2.6rem, 700);
+    height: 150px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    &::after {
+      content: '';
+      display: block;
+      width: 60%;
+      height: 2px;
+      background-color: map-get($mainColors, light-blue);
+    }
+
+
+    span {
+        @include fontProp(7rem,800);
+        color: map-get($mainColors, sea-blue);
+    }
+}
+/*Promo*/
+.promo {
+    ul {
+      margin-bottom: 8rem;
+      @include breakpoints($media-xl) {
+
+        margin-bottom: 0;
+      }
+
+
+        li {
+            padding: 1rem 0;
+
+            &:nth-child(odd) {
+                padding: 1.5rem 0;
+                background-color: map-get($mainColors, sea-blue);
+                box-shadow: inset 0px 0px 0px 5px lighten(map-get($mainColors, sea-blue),20);
+                color: white;
+                @include fontProp(2rem, 700);
+            }
+
+            &:nth-child(even) {
+                @include fontProp(1.8rem, 700);
+                background-color: lighten(map-get($mainColors, beige-balls), 10);
+            }
+
+            &:nth-child(4) {
+                @include fontProp(2rem, 800);
+            }
+
+            &:last-of-type {
+                background-color: map-get($mainColors, dark-blue);
+                box-shadow: inset 0px 0px 0px 5px lighten(map-get($mainColors, dark-blue),10);
+                font-size: 3.6rem;
+                color: map-get($mainColors, light-blue);
+            }
+        }
+    }
+}
+/*other-disease*/
+.other-wrapper {
+    margin-top: 50px;
+    font-weight: 600;
+
+     span {
+
+       @include fontProp(20px,700);
+       color: map-get($mainColors, dark-blue);
+     }
+}
+
+.other-disease {
+
+  text-align: center;
+
+
+    ul {
+        position: relative;
+
+        li {
+          border: 1px solid red;
+          width: 70%;
+          margin: 0 auto;
+
+          @include breakpoints($media-xl) {
+
+            width: 100%;
+            margin: 0;
+
+          }
+            &::before {
+                @include listBullet(map-get($mainColors, sea-blue));
+            }
+        }
+    }
+}
+/*other-therapies*/
+.therapy-wrapper {
+    text-align: center;
+
+    &:hover .therapy-img {
+        background-position: -28px -111px;
+    }
+
+    .therapy-img {
+        width: 80px;
+        height: 70px;
+        background-image: url('../img/other-therapies.png');
+        background-position: -28px -19px;
+        margin: 0 auto;
+        transition: all 0.3s;
+    }
+}
+
+#other-therapies {
+    .row {
+        .col-lg-4, .col-sm-8 {
+            &:nth-of-type(2) {
+                .therapy-wrapper {
+                    text-align: center;
+
+                    &:hover .therapy-img {
+                        background-position: -130px -111px;
+                    }
+
+                    .therapy-img {
+                        background-position: -130px -19px;
+                    }
+                }
+            }
+
+            &:nth-of-type(3) {
+                .therapy-wrapper {
+                    text-align: center;
+
+                    &:hover .therapy-img {
+                        background-position: -210px -111px;
+                    }
+
+                    .therapy-img {
+                        background-position: -210px -19px;
+                    }
+                }
+            }
+        }
+    }
+
+    .row:last-of-type {
+        .col-lg-4,.col-sm-8 {
+            &:nth-of-type(1) {
+                .therapy-wrapper {
+                    text-align: center;
+
+                    &:hover .therapy-img {
+                        background-position: -298px -111px;
+                    }
+
+                    .therapy-img {
+                        background-position: -298px -19px;
+                    }
+                }
+            }
+
+            &:nth-of-type(2) {
+                .therapy-wrapper {
+                    text-align: center;
+
+                    &:hover .therapy-img {
+                        background-position: -395px -111px;
+                    }
+
+                    .therapy-img {
+                        background-position: -395px -19px;
+                    }
+                }
+            }
+
+            &:nth-of-type(3) {
+                .therapy-wrapper {
+                    text-align: center;
+
+                    &:hover .therapy-img {
+                        background-position: -498px -111px;
+                    }
+
+                    .therapy-img {
+                        background-position: -498px -19px;
+                    }
+                }
+            }
+        }
+    }
+}
