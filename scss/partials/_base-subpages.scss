@@ -1,24 +1,23 @@
 /*Nalmed therapy*/
 .therapy-desc {
-    margin-bottom: 50px;
+    margin-bottom: 5rem;
 
     p {
         text-align: left;
 
         span {
-
-          color: map-get($mainColors, dark-blue);
-          font-weight: 700;
+            color: map-get($mainColors, dark-blue);
+            font-weight: 700;
         }
     }
 }
+
 .molecule-wrapper {
-
-  @include breakpoints($media-md) {
-
-    margin-bottom: 5rem;
-  }
+    @include breakpoints($media-md) {
+        margin-bottom: 5rem;
+    }
 }
+
 .molecule {
     width: 100%;
     height: 350px;
@@ -27,7 +26,6 @@
 
     img {
         animation: molecules 4s ease-in-out 1s infinite alternate;
-
     }
 }
 
@@ -39,14 +37,14 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    &::after {
-      content: '';
-      display: block;
-      width: 60%;
-      height: 2px;
-      background-color: map-get($mainColors, light-blue);
-    }
 
+    &::after {
+        content: '';
+        display: block;
+        width: 60%;
+        height: 2px;
+        background-color: map-get($mainColors, light-blue);
+    }
 
     span {
         @include fontProp(7rem,800);
@@ -54,40 +52,77 @@
     }
 }
 /*Promo*/
-.promo {
-    ul {
-      margin-bottom: 8rem;
-      @include breakpoints($media-xl) {
-
+.promo-wrapper {
+    &:hover .promo {
+      transform: rotateY(180deg);
+    }
+    width: 100%;
+    height: 292px;
+    position: relative;
+    perspective: 800px;
+    margin-bottom: 8rem;
+    @include breakpoints($media-xl) {
         margin-bottom: 0;
-      }
+    }
+
+    .promo {
+
+        transition: 0.6s;
+	      transform-style: preserve-3d;
+	      position: relative;
+
+        ul , .back {
+          width: 100%;
+          backface-visibility: hidden;
+	        position: absolute;
+	        top: 0;
+	        left: 0;
+        }
+
+        .back {
+	         transform: rotateY(180deg);
+           height: 292px;
+           background-color: map-get($mainColors, dark-blue);
+           box-shadow: inset 0 0 0 5px rgba(255,255,255,0.4);
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           color: map-get($mainColors, light-blue);
+           @include fontProp(2.5rem, 700);
 
 
-        li {
-            padding: 1rem 0;
+         }
 
-            &:nth-child(odd) {
-                padding: 1.5rem 0;
-                background-color: map-get($mainColors, sea-blue);
-                box-shadow: inset 0px 0px 0px 5px lighten(map-get($mainColors, sea-blue),20);
-                color: white;
-                @include fontProp(2rem, 700);
-            }
+        ul {
 
-            &:nth-child(even) {
-                @include fontProp(1.8rem, 700);
-                background-color: lighten(map-get($mainColors, beige-balls), 10);
-            }
+          z-index: 2;
+		      transform: rotateY(0deg);
+            li {
+                padding: 1rem 0;
 
-            &:nth-child(4) {
-                @include fontProp(2rem, 800);
-            }
+                &:nth-child(odd) {
+                    padding: 1.5rem 0;
+                    background-color: map-get($mainColors, sea-blue);
+                    box-shadow: inset 0 0 0 5px lighten(map-get($mainColors, sea-blue),20);
+                    color: white;
+                    @include fontProp(2rem, 700);
+                }
 
-            &:last-of-type {
-                background-color: map-get($mainColors, dark-blue);
-                box-shadow: inset 0px 0px 0px 5px lighten(map-get($mainColors, dark-blue),10);
-                font-size: 3.6rem;
-                color: map-get($mainColors, light-blue);
+                &:nth-child(even) {
+                    @include fontProp(1.8rem, 700);
+                    background-color: lighten(map-get($mainColors, beige-balls), 10);
+                }
+
+                &:nth-child(4) {
+                    @include fontProp(2rem, 800);
+                }
+
+                &:last-of-type {
+                    background-color: map-get($mainColors, dark-blue);
+                    box-shadow: inset 0 0 0 5px rgba(255,255,255,0.4);
+                    font-size: 3.6rem;
+                    color: map-get($mainColors, light-blue);
+                }
             }
         }
     }
@@ -97,32 +132,27 @@
     margin-top: 50px;
     font-weight: 600;
 
-     span {
-
-       @include fontProp(20px,700);
-       color: map-get($mainColors, dark-blue);
-     }
+    span {
+        @include fontProp(20px,700);
+        color: map-get($mainColors, dark-blue);
+    }
 }
 
 .other-disease {
-
-  text-align: center;
-
+    text-align: center;
 
     ul {
         position: relative;
 
         li {
-          border: 1px solid red;
-          width: 70%;
-          margin: 0 auto;
+            border: 1px solid red;
+            width: 70%;
+            margin: 0 auto;
+            @include breakpoints($media-xl) {
+                width: 100%;
+                margin: 0;
+            }
 
-          @include breakpoints($media-xl) {
-
-            width: 100%;
-            margin: 0;
-
-          }
             &::before {
                 @include listBullet(map-get($mainColors, sea-blue));
             }
@@ -149,7 +179,8 @@
 
 #other-therapies {
     .row {
-        .col-lg-4, .col-sm-8 {
+        .col-lg-4,
+        .col-sm-8 {
             &:nth-of-type(2) {
                 .therapy-wrapper {
                     text-align: center;
@@ -181,7 +212,8 @@
     }
 
     .row:last-of-type {
-        .col-lg-4,.col-sm-8 {
+        .col-lg-4,
+        .col-sm-8 {
             &:nth-of-type(1) {
                 .therapy-wrapper {
                     text-align: center;

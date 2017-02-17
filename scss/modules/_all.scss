@@ -115,6 +115,11 @@ body {
     font-size: 1.6rem !important;
     color: map-get($mainColors, main-font) !important;
     font-weight: 500;
+
+    @include breakpoints($media-xs) {
+
+      font-size: 1.8rem !important;
+    }
 }
 
 .preload * {
