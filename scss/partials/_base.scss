@@ -1,41 +1,4 @@
 
-h1 {
-
-  @include fontProp(3rem, 700);
-  color: white;
-  border: 1px solid red;
-  padding: 0 4rem;
-  width: 70%;
-  @include breakpoints($media-md) {
-    width: 100%;
-
-  }
-
-  &::before, &::after {
-
-    content: '';
-    display: block;
-    width: 60%;
-    margin: 0 auto;
-    height: 3px;
-    background-color: map-get($mainColors, sea-blue);
-
-  }
-
-  &::before {
-
-    margin-bottom: 2rem;
-  }
-
-  &::after {
-
-    margin-top: 2rem;
-  }
-  span {
-
-    color: map-get($mainColors, light-blue);
-  }
-}
 h2 {
     text-align: center;
     @include fontProp(4.5rem, 800);
