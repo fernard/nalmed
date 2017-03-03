@@ -20,9 +20,16 @@ header {
         nav {
             align-self: flex-end;
             /*Menu*/
-            ul {
-                list-style: none;
-                padding-bottom: 10px;
+            .main-menu {
+
+              visibility: hidden;
+
+                @include breakpoints($media-lg) {
+
+                  visibility: visible;
+                  padding-bottom: 10px;
+                  list-style: none;
+                }
             }
 
             li {
@@ -196,7 +203,7 @@ header {
 
             &:hover {
                 background-color: rgba(0,104,159,1);
-                font-size: 6rem;
+                font-size: 3.5rem;
             }
         }
 

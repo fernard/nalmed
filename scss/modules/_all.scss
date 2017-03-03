@@ -57,7 +57,7 @@ $media-xl: '(min-width: 1200px)';
   border-radius: 50%;
   background-color: rgba(0,104,159,0.7);
   color: white;
-  @include fontProp(5rem,700);
+  @include fontProp(3rem,700);
   display: flex;
   justify-content: center;
   align-items: center;

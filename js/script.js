@@ -1,8 +1,30 @@
-window.addEventListener('DOMContentLoaded', function(){
+$(document).ready(function() {
 
-  var body = document.querySelector('body');
+    // Clean CSS Animations
+    $('body').removeClass('preload');
 
-  body.classList.remove('preload');
-  console.log('preload wywalony');
+    // Inline Menu Animation
+    var menuLinks = $('nav').find('li a');
+    console.log(menuLinks);
+
+    menuLinks.on('click', function() {
+
+        var href = $(this).attr('href');
+        console.log(href);
+
+        if (href.indexOf('#') === 0) {
+
+            var divOffsetTop = $(href).offset().top;
+
+            $('body').animate({
+
+                scrollTop: divOffsetTop
+
+            }, 1000);
+
+        }
+
+    });
+
 
 });
