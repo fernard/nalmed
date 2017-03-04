@@ -13,10 +13,14 @@
 }
 
 .molecule-wrapper {
-    @include breakpoints($media-md) {
-        margin-bottom: 5rem;
+  display: none;
+
+
+    @include breakpoints($media-sm) {
+
+        display: block;
     }
-}
+
 
 .molecule {
     width: 100%;
@@ -25,7 +29,12 @@
     position: relative;
 
     img {
-        animation: molecules 4s ease-in-out 1s infinite alternate;
+          display: block;
+          margin: 0 auto;
+          animation: molecules 4s ease-in-out 1s infinite alternate;
+
+      }
+
     }
 }
 
