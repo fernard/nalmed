@@ -1,94 +1,170 @@
 /*Header*/
+.onScroll {
+    z-index: 1;
+    background-color: rgba(255,255,255,0.9);
+    border-bottom: 4px solid map-get($mainColors, dark-blue);
+    position: fixed;
+}
+
 header {
     height: 120px;
-    background-color: white;
+    background-color: rgba(255,255,255,1);
     border-bottom: 4px solid map-get($mainColors, sea-blue);
+    transition: 1s linear;
+    width: 100%;
+
 
     .head-wrapper {
         height: 116px;
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+
+
         /*Logo*/
         .logo {
             img {
-                width: 100%;
+                width: 80%;
                 height: auto;
+
+                @include breakpoints($media-sm) {
+                  width: 100%;
+                }
+
             }
         }
         /*Nav*/
+
         nav {
             align-self: flex-end;
-            /*Menu*/
-            .main-menu {
+            margin-bottom: 4rem;
+            margin-right: 0.5rem;
 
-              visibility: hidden;
+            @include breakpoints($media-sm) {
+                margin-right: 3rem;
+            }
+            @include breakpoints($media-lg) {
+                margin-bottom: 0;
+                margin-right: 0;
+            }
 
+            // Mobile-menu
+
+            .hamburger {
+                width: 40px;
+                height: 36px;
+                border: 2px solid map-get($mainColors, beige-balls);
+                transform: rotate(0deg);
+                transition: 0.4s ease-in-out;
+
+                &.extended {
+                    transform: rotate(90deg);
+                }
+
+                span {
+                    display: block;
+                    height: 6px;
+                    background-color: map-get($mainColors, sea-blue);
+                    margin: 4px 2px;
+                }
                 @include breakpoints($media-lg) {
-
-                  visibility: visible;
-                  padding-bottom: 10px;
-                  list-style: none;
+                    display: none;
                 }
             }
 
-            li {
-                display: inline-block;
+            .mobile-menu {
 
-                &.sub-menu {
-                    position: relative;
-                    /*Sub-Menu*/
-                    ul {
-                        visibility: hidden;
-                        position: absolute;
-                        opacity: 0;
-                        background-color: map-get($mainColors, dark-blue);
-                        display: flex;
-                        flex-direction: column;
-                        top: 100%;
-                        left: 0;
-                        z-index: -1;
-                        transform: translateY(-20%);
-                        transition: all 0.5s;
+              position: absolute;
+              width: 100%;
+              left: 0;
+              display: none;
+              margin-top: 4rem;
+              z-index: 1;
 
-                        li {
-                            padding: 10px 0;
-                            width: 150px;
+              @include breakpoints($media-lg) {
+                  display: none;
+              }
+              li {
 
-                            .sub-menu-link {
-                                color: lighten(black, 90);
-                                font-size: 1.4rem;
-                                transition: all 0.4s;
-                                text-align: center;
-                                display: block;
+                background-color: map-get($mainColors, dark-blue);
+                padding: 1rem 0;
+                border: 1px solid transparentize(map-get($mainColors, sea-blue), 0.75);
 
-                                &:hover {
-                                    color: map-get($mainColors, dark-blue);
-                                    background-color: white;
-                                    padding: 0;
+                a {
+
+                  color: white;
+                }
+              }
+
+            }
+            /*Menu*/
+            .main-menu {
+                display: none;
+                @include breakpoints($media-lg) {
+                    display: block;
+                    padding-bottom: 10px;
+                    list-style: none;
+                }
+
+                li {
+                    display: inline-block;
+
+                    &.sub-menu {
+                        position: relative;
+                        /*Sub-Menu*/
+                        ul {
+                            visibility: hidden;
+                            position: absolute;
+                            opacity: 0;
+                            background-color: map-get($mainColors, dark-blue);
+                            display: flex;
+                            flex-direction: column;
+                            top: 100%;
+                            left: 0;
+                            z-index: 0;
+                            transform: translateY(-20%);
+                            transition: all 0.5s;
+
+                            li {
+                                padding: 10px 0;
+                                width: 150px;
+
+                                .sub-menu-link {
+                                    color: lighten(black, 90);
+                                    font-size: 1.4rem;
+                                    transition: all 0.4s;
+                                    text-align: center;
+                                    display: block;
+
+                                    &:hover {
+                                        color: map-get($mainColors, dark-blue);
+                                        background-color: white;
+                                        padding: 0;
+                                    }
                                 }
                             }
                         }
+
+                        &:hover ul {
+                            visibility: visible;
+                            z-index: 1;
+                            opacity: 1;
+                            transform: translateY(5%);
+                        }
                     }
 
-                    &:hover ul {
-                        visibility: visible;
-                        opacity: 1;
-                        z-index: 1;
-                        transform: translateY(5%);
-                    }
-                }
+                    a {
+                        font-weight: 700;
+                        color: map-get($mainColors, main-font);
+                        transition: all 0.4s;
+                        padding: 0 5px;
 
-                a {
-                    font-weight: 700;
-                    color: map-get($mainColors, main-font);
-                    transition: all 0.4s;
-                    padding: 0 5px;
-
-                    &:hover {
-                        color: white;
-                        padding: 10px 5px;
-                        background-color: map-get($mainColors, dark-blue);
+                        &:hover {
+                            color: white;
+                            padding: 10px 5px;
+                            background-color: map-get($mainColors, dark-blue);
+                        }
                     }
                 }
             }
@@ -103,11 +179,8 @@ header {
         list-style: none;
         overflow: hidden;
         position: relative;
-
         @include breakpoints($media-md) {
-
-          height: 650px;
-
+            height: 650px;
         }
 
         li {
@@ -115,86 +188,67 @@ header {
             overflow: hidden;
 
             img {
-              width: auto;
+                width: auto;
                 height: 350px;
                 @include breakpoints($media-md) {
-                  height: 650px;
-
-
+                    height: 650px;
                 }
                 @include breakpoints($media-xl) {
-                  width: 100%;
-
+                    width: 100%;
                 }
             }
         }
 
         .motto-wrapper {
-
-          position: absolute;
-          height: 100%;
-          background-color: rgba(0,0,0, 0.65);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 100%;
-          left: 0;
-          right: 0;
-
-
-          @include breakpoints($media-md) {
-            width: 60%;
-            left: 35%;
-            background-color: rgba(0,0,0, 0.55);
-          }
-          @include breakpoints($media-lg) {
-            width: 35%;
-            right: 10%;
-            left: auto;
-          }
-
-          @include breakpoints($media-xl) {
-            width: 30%;
-
-          }
-
-          h1 {
-
-            @include fontProp(2.3rem, 700);
-            border: 1px solid red;
-            padding: 0 4rem;
-            width: 65%;
-            text-align: center;
-            color: white;
-
-            @include breakpoints($media-md) {
+            position: absolute;
+            height: 100%;
+            background-color: rgba(0,0,0, 0.65);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             width: 100%;
-            @include fontProp(3rem, 700);
-
-              }
-
-
-
-            &::before, &::after {
-
-              content: '';
-              display: block;
-              width: 60%;
-              margin: 0 auto;
-              height: 3px;
-              background-color: map-get($mainColors, sea-blue);
-
+            left: 0;
+            right: 0;
+            @include breakpoints($media-md) {
+                width: 60%;
+                left: 35%;
+                background-color: rgba(0,0,0, 0.55);
+            }
+            @include breakpoints($media-lg) {
+                width: 35%;
+                right: 10%;
+                left: auto;
+            }
+            @include breakpoints($media-xl) {
+                width: 30%;
             }
 
+            h1 {
+                @include fontProp(2.3rem, 700);
+                border: 1px solid red;
+                padding: 0 4rem;
+                width: 65%;
+                text-align: center;
+                color: white;
+                @include breakpoints($media-md) {
+                    width: 100%;
+                    @include fontProp(3rem, 700);
+                }
 
-            span {
+                &::after,
+                &::before {
+                    content: '';
+                    display: block;
+                    width: 60%;
+                    margin: 0 auto;
+                    height: 3px;
+                    background-color: map-get($mainColors, sea-blue);
+                }
 
-              color: map-get($mainColors, light-blue);
+                span {
+                    color: map-get($mainColors, light-blue);
+                }
             }
-          }
-
-
-
         }
 
         .arrow {
@@ -218,7 +272,5 @@ header {
             top: 45%;
             padding-left: 0.5rem;
         }
-
-
     }
 }
