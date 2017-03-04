@@ -64,6 +64,12 @@ $media-xl: '(min-width: 1200px)';
   padding-bottom: 0.5rem;
 }
 
+@mixin arrowProps($top,$left,$padding-side) {
+
+  left: $left;
+  top: $top;
+  padding-#{$padding-side}: 0.5rem;
+}
 @mixin fontProp($font-size, $font-weight) {
 
   font-size: $font-size;
@@ -81,25 +87,6 @@ $media-xl: '(min-width: 1200px)';
   margin-top: 0.8rem;
   margin-left: 0.1rem;
 }
-
-// @mixin ballSize($dim,$color) {
-//
-//   width: $dim;
-//   height: $dim;
-//   background-color: map-get($mainColors, $color);
-//   border-radius: 50%;
-//   position: absolute;
-//   z-index: 1;
-// }
-//
-// @mixin stickSize($height) {
-//
-//   width: 50%;
-//   height: $height;
-//   background-color: map-get($mainColors, main-font);
-//   position: absolute;
-//   z-index: 0;
-// }
 
 * {
     margin: 0;
@@ -143,6 +130,6 @@ section {
 
 ul {
 
-  list-style: none;
+  list-style-type: none;
   text-align: center;
 }
