@@ -81,24 +81,55 @@ $(document).ready(function() {
     form.on('submit', function(e) {
 
         e.preventDefault();
-        if (nameInput.val().length < 5) {
+
+        var formData = {
+
+          name: nameInput.val(),
+          email: emailInput.val(),
+          subject: subject.val(),
+          message: message.val()
+
+        };
+
+        if (formData.name.length < 5) {
 
             errorMessage.text('Za krótkie imię');
             errorMessage.fadeIn('400');
 
-        } else if (emailInput.val().indexOf('@') === -1 || emailInput.val().indexOf('.') === -1) {
+        } else if (formData.email.indexOf('@') === -1 || formData.email.indexOf('.') === -1) {
             errorMessage.text('Niepoprawny adres e-mail');
             errorMessage.fadeIn('400');
-        } else if (subject.val().length < 5) {
+        } else if (formData.subject.length < 5) {
             errorMessage.text('Za krótki temat wiadomości');
             errorMessage.fadeIn('400');
-        } else if (message.val().length < 10) {
+        } else if (formData.message.length < 10) {
             errorMessage.text('Za krótka wiadomość');
             errorMessage.fadeIn('400');
+        } else {
+
+          $.ajax({
+
+            type: "POST",
+            url: 'mail.php',
+            data: formData,
+            dataType: 'json'
+
+
+          }).done(function(success) {
+            console.log(success);
+            errorMessage.css('backgroundColor','green');
+            errorMessage.text('Udało się wysłać wiadomość!');
+            errorMessage.fadeIn('400');
+
+          })
+          .fail(function(error){
+
+            console.log(error);
+          })
         }
 
 
-        console.log('Stop');
+
     });
 
 
