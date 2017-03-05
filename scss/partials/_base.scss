@@ -81,9 +81,14 @@ h3 {
             border: 1px solid blue;
 
             li {
-                width: 80%;
+
                 text-align: center;
                 margin: 0 auto;
+
+                @include breakpoints($media-xs) {
+                  padding: 0.5rem 1rem;
+                  width: 70%;
+                }
 
                 &::before {
                     @include listBullet(map-get($mainColors, sea-blue));
@@ -125,13 +130,11 @@ h3 {
         &::before {
             content: '';
             display: block;
+            @include posAbsProp(25%,2%,auto,auto);
             width: 34px;
             height: 34px;
             background-image: url('../img/cross.png');
             background-size: contain;
-            position: absolute;
-            left: 2%;
-            top: 25%;
             transition: all 1s;
 
             @include breakpoints($media-xs) {
@@ -158,8 +161,12 @@ h3 {
 
         li {
             text-align: center;
-            padding: 0.5rem 1.5rem;
+            padding: 0.5rem 0.5rem;
 
+            @include breakpoints($media-sm) {
+
+              padding: 0.5rem 1.5rem;
+            }
             &::before {
                 @include listBullet(white);
             }

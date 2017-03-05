@@ -65,5 +65,41 @@ $(document).ready(function() {
 
     });
 
+    // Image slider
+
+
+
+    // Validate form
+
+    var errorMessage = $('.error-message'),
+        form = $('#myForm'),
+        nameInput = $('#nameInput'),
+        emailInput = $('#emailInput'),
+        subject = $('#subject'),
+        message = form.find('#message');
+
+    form.on('submit', function(e) {
+
+        e.preventDefault();
+        if (nameInput.val().length < 5) {
+
+            errorMessage.text('Za krótkie imię');
+            errorMessage.fadeIn('400');
+
+        } else if (emailInput.val().indexOf('@') === -1 || emailInput.val().indexOf('.') === -1) {
+            errorMessage.text('Niepoprawny adres e-mail');
+            errorMessage.fadeIn('400');
+        } else if (subject.val().length < 5) {
+            errorMessage.text('Za krótki temat wiadomości');
+            errorMessage.fadeIn('400');
+        } else if (message.val().length < 10) {
+            errorMessage.text('Za krótka wiadomość');
+            errorMessage.fadeIn('400');
+        }
+
+
+        console.log('Stop');
+    });
+
 
 });

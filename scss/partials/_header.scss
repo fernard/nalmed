@@ -77,10 +77,8 @@ header {
             }
 
             .mobile-menu {
-
-              position: absolute;
+              @include posAbsProp(auto,0,auto,auto);
               width: 100%;
-              left: 0;
               display: none;
               margin-top: 4rem;
               z-index: 1;
@@ -117,14 +115,12 @@ header {
                         position: relative;
                         /*Sub-Menu*/
                         ul {
+                            @include posAbsProp(100,0,auto,auto);
                             visibility: hidden;
-                            position: absolute;
                             opacity: 0;
                             background-color: map-get($mainColors, dark-blue);
                             display: flex;
                             flex-direction: column;
-                            top: 100%;
-                            left: 0;
                             z-index: 0;
                             transform: translateY(-20%);
                             transition: all 0.5s;
@@ -186,15 +182,14 @@ header {
   }
 
   .motto-wrapper {
-      position: absolute;
+      @include posAbsProp(auto,0,auto,0);
       height: 100%;
       background-color: rgba(0,0,0, 0.65);
       display: flex;
       align-items: center;
       justify-content: center;
       width: 100%;
-      left: 0;
-      right: 0;
+
       @include breakpoints($media-md) {
           width: 60%;
           left: 20%;

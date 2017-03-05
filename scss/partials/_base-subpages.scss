@@ -81,11 +81,10 @@
 	      position: relative;
 
         ul , .back {
+          @include posAbsProp(0,0,auto,auto);
           width: 100%;
           backface-visibility: hidden;
-	        position: absolute;
-	        top: 0;
-	        left: 0;
+
         }
 
         .back {
