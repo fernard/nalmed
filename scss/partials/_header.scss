@@ -6,6 +6,19 @@
 
 }
 
+.invisible {
+  visibility: hidden;
+  opacity: 0;
+  transition: 1s linear;
+}
+
+.visible {
+  visibility: visible;
+  opacity: 1;
+  transition: 1s linear;
+}
+
+
 header {
 
     height: 120px;
@@ -176,7 +189,7 @@ header {
   width: 100%;
   height: 350px;
   position: relative;
-
+  z-index: 0;
   @include breakpoints($media-md) {
       height: 650px;
   }
@@ -189,6 +202,7 @@ header {
       align-items: center;
       justify-content: center;
       width: 100%;
+      z-index: 1;
 
       @include breakpoints($media-md) {
           width: 60%;
@@ -235,7 +249,7 @@ header {
   .arrow {
       @include arrow;
       transition: all 0.6s;
-
+      z-index: 1;
       @include breakpoints($media-md) {
 
         display: flex;
@@ -260,19 +274,21 @@ header {
   }
 }
     .slider-wrapper {
+        position: relative;
         width: 100%;
         height: 100%;
-        overflow: hidden;
-
-
 
         li {
             width: 100%;
             overflow: hidden;
+            @include posAbsProp(0,0,auto,auto);
+
+
 
             img {
                 width: auto;
                 height: 350px;
+                opacity: 1;
                 @include breakpoints($media-md) {
                     height: 650px;
                 }

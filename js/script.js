@@ -1,7 +1,9 @@
 $(document).ready(function() {
 
+
     // Clean CSS Animations
     $('body').removeClass('preload');
+
 
     // Header scroll
 
@@ -68,6 +70,43 @@ $(document).ready(function() {
     // Image slider
 
 
+    var leftArrow = $('.left'),
+        rightArrow = $('.right'),
+        sliderWrapper = $('.slider-wrapper'),
+        slideImg = $('.slider-wrapper').find('li img'),
+        slideIndex = 0;
+
+    $(leftArrow).on('click', function() {
+
+        if (slideIndex > 0) {
+
+            $(slideImg.eq(slideIndex)).toggleClass('invisible visible');
+
+            $(slideImg.eq(slideIndex - 1)).toggleClass('invisible visible');
+
+            slideIndex--;
+        }
+
+    });
+
+    $(rightArrow).on('click', function() {
+
+        if (slideIndex < $(slideImg).length) {
+
+            $(slideImg.eq(slideIndex)).toggleClass('invisible visible');
+            $(slideImg.eq(slideIndex + 1)).toggleClass('invisible visible');
+            slideIndex++;
+
+
+        } else {
+            $(slideImg.eq(slideIndex)).toggleClass('invisible visible');
+            slideIndex = 0;
+            $(slideImg.eq(slideIndex)).toggleClass('invisible visible');
+
+        }
+
+    });
+
 
     // Validate form
 
@@ -84,10 +123,10 @@ $(document).ready(function() {
 
         var formData = {
 
-          name: nameInput.val(),
-          email: emailInput.val(),
-          subject: subject.val(),
-          message: message.val()
+            name: nameInput.val(),
+            email: emailInput.val(),
+            subject: subject.val(),
+            message: message.val()
 
         };
 
@@ -107,25 +146,25 @@ $(document).ready(function() {
             errorMessage.fadeIn('400');
         } else {
 
-          $.ajax({
+            $.ajax({
 
-            type: "POST",
-            url: 'mail.php',
-            data: formData,
-            dataType: 'json'
+                    type: "POST",
+                    url: 'mail.php',
+                    data: formData,
+                    dataType: 'json'
 
 
-          }).done(function(success) {
-            console.log(success);
-            errorMessage.css('backgroundColor','green');
-            errorMessage.text('Udało się wysłać wiadomość!');
-            errorMessage.fadeIn('400');
+                }).done(function(success) {
+                    console.log(success);
+                    errorMessage.css('backgroundColor', 'green');
+                    errorMessage.text('Udało się wysłać wiadomość!');
+                    errorMessage.fadeIn('400');
 
-          })
-          .fail(function(error){
+                })
+                .fail(function(error) {
 
-            console.log(error);
-          })
+                    console.log(error);
+                })
         }
 
 
