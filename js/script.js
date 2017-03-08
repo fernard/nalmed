@@ -38,50 +38,84 @@ $(document).ready(function() {
 
     var leftArrow = $('.left'),
         rightArrow = $('.right'),
-        sliderWrapper = $('.slides'),
-        slideImg = $('.slider-wrapper').find('li'),
-        slideIndex = 0;
+        slides = $('.slides'),
+        sliderWrapper = $('.slider-wrapper');
+        slideImg = $('.slides').find('li'),
+        slideIndex = 0,
+        sliderWrapperWidthInitial = sliderWrapper.innerWidth();
+        // Making copies of li elements
+        firstSlideCopy = slideImg.first().clone();
+        lastSlideCopy = slideImg.last().clone();
+        firstSlideCopy.appendTo(slides);
+        lastSlideCopy.prependTo(slides);
+        // Updating array length - tutaj mam największy problem, bo nadpisuję zmienną, ale inaczej nie jestem w stanie dynamicznie uaktualnić długości tablicy z elementami li, która jest mi potrzebna do ustalenia szerokości kontenera i szerokości poszczególnych obrazków
+        slideImg = $('.slides').find('li');
+
+        // Setting each li element width
+
         liWidth = (100 / slideImg.length) + "%";
+        slideImg.css('width', liWidth);
 
-    slideImg.css('width', liWidth);
+        // Handles the sliding width dynamically updated slider wrapper width
 
-    $(leftArrow).on('click', function() {
+      function launchSlider(sliderWrapperWidth) {
 
-        if (slideIndex > 0) {
+        var slidesWidth = sliderWrapperWidth * slideImg.length;
+        slides.css('width', slidesWidth);
 
-            $(sliderWrapper).animate({
+        $(leftArrow).on('click', function() {
 
-                left: "+=100%"
+            if (slideIndex > 0) {
 
-            }, 500);
+                $(slides).animate({
 
-            slideIndex--;
-        }
+                    left: "+=100%"
 
+                }, 500);
 
-    });
-
-
-    $(rightArrow).on('click', function() {
-
-        if (slideIndex < $(slideImg).length - 1) {
-
-            $(sliderWrapper).animate({
-
-                left: "-=100%"
-
-            }, 500);
-
-            slideIndex++;
-            console.log(slideIndex);
-        }
+                slideIndex--;
+            }
 
 
-    });
+        });
 
-    //  Hide mobile-menu and reset hamburger class when mobile-menu is visible and hamburger class disappears due to size-change
+
+        $(rightArrow).on('click', function() {
+
+            if (slideIndex < slideImg.length - 1) {
+
+                $(slides).animate({
+
+                    left: "-=100%"
+
+                }, 500);
+
+                slideIndex++;;
+            }
+
+
+        });
+
+    }
+
+    // launching the function with initial width as argument
+
+    launchSlider(sliderWrapperWidthInitial);
+
+
+    // Handling resize function
+
+
     $(window).on('resize', function() {
-        var windowWidth = $(this).innerWidth();
+
+          // Slider wrapper width is dynamically updated on each window resize and the function is launched with the new wrapper width as the argument
+
+        var windowWidth = $(this).innerWidth(),
+            sliderWrapperWidth = sliderWrapper.innerWidth();
+
+        launchSlider(sliderWrapperWidth);
+
+        //  Hide mobile-menu and reset hamburger class when mobile-menu is visible and hamburger class disappears due to size-change
         if (windowWidth > 992 && $('.hamburger').hasClass('extended')) {
 
             $('.mobile-menu').css('display', 'none');
@@ -149,7 +183,7 @@ $(document).ready(function() {
             errorMessage.text('Za krótka wiadomość');
             errorMessage.fadeIn('400');
         } else {
-
+            // Sending form data
             $.ajax({
 
                     type: "POST",

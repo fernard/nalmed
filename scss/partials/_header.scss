@@ -245,20 +245,16 @@ header {
     height: 100%;
     position: relative;
 
-
-
     .slides {
-        width: 300%;
         @include posAbsProp(auto,0,auto,auto);
         clear: both;
 
         li {
-            float:left;
+            float: left;
 
             img {
                 width: auto;
                 height: 350px;
-                opacity: 1;
                 @include breakpoints($media-md) {
                     height: 650px;
                 }
@@ -268,4 +264,4 @@ header {
             }
         }
     }
-  }
+}
