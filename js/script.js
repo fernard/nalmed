@@ -53,7 +53,7 @@ $(document).ready(function() {
 
         // Setting each li element width
 
-        liWidth = (100 / slideImg.length) + "%";
+        var liWidth = (100 / slideImg.length) + "%";
         slideImg.css('width', liWidth);
 
         // Handles the sliding width dynamically updated slider wrapper width
@@ -64,12 +64,12 @@ $(document).ready(function() {
         slides.css('width', slidesWidth);
 
         $(leftArrow).on('click', function() {
-
+            var slideValue = sliderWrapper.innerWidth();
             if (slideIndex > 0) {
 
                 $(slides).animate({
 
-                    left: "+=100%"
+                    left: '+=' + slideValue
 
                 }, 500);
 
@@ -81,16 +81,16 @@ $(document).ready(function() {
 
 
         $(rightArrow).on('click', function() {
-
+            var slideValue = sliderWrapper.innerWidth();
             if (slideIndex < slideImg.length - 1) {
 
                 $(slides).animate({
 
-                    left: "-=100%"
+                    left: '-=' + slideValue
 
                 }, 500);
 
-                slideIndex++;;
+                slideIndex++;
             }
 
 
