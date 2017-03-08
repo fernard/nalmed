@@ -59,7 +59,7 @@ $(document).ready(function() {
         // Handles the sliding width dynamically updated slider wrapper width
 
       function launchSlider(sliderWrapperWidth) {
-
+        
         var slidesWidth = sliderWrapperWidth * slideImg.length;
         slides.css('width', slidesWidth);
 
