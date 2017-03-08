@@ -34,6 +34,51 @@ $(document).ready(function() {
 
     });
 
+    // Image slider
+
+    var leftArrow = $('.left'),
+        rightArrow = $('.right'),
+        sliderWrapper = $('.slides'),
+        slideImg = $('.slider-wrapper').find('li'),
+        slideIndex = 0;
+        liWidth = (100 / slideImg.length) + "%";
+
+    slideImg.css('width', liWidth);
+
+    $(leftArrow).on('click', function() {
+
+        if (slideIndex > 0) {
+
+            $(sliderWrapper).animate({
+
+                left: "+=100%"
+
+            }, 500);
+
+            slideIndex--;
+        }
+
+
+    });
+
+
+    $(rightArrow).on('click', function() {
+
+        if (slideIndex < $(slideImg).length - 1) {
+
+            $(sliderWrapper).animate({
+
+                left: "-=100%"
+
+            }, 500);
+
+            slideIndex++;
+            console.log(slideIndex);
+        }
+
+
+    });
+
     //  Hide mobile-menu and reset hamburger class when mobile-menu is visible and hamburger class disappears due to size-change
     $(window).on('resize', function() {
         var windowWidth = $(this).innerWidth();
@@ -66,47 +111,6 @@ $(document).ready(function() {
         }
 
     });
-
-    // Image slider
-
-
-    var leftArrow = $('.left'),
-        rightArrow = $('.right'),
-        sliderWrapper = $('.slider-wrapper'),
-        slideImg = $('.slider-wrapper').find('li img'),
-        slideIndex = 0;
-
-    $(leftArrow).on('click', function() {
-
-        if (slideIndex > 0) {
-
-            $(slideImg.eq(slideIndex)).toggleClass('invisible visible');
-
-            $(slideImg.eq(slideIndex - 1)).toggleClass('invisible visible');
-
-            slideIndex--;
-        }
-
-    });
-
-    $(rightArrow).on('click', function() {
-
-        if (slideIndex < $(slideImg).length) {
-
-            $(slideImg.eq(slideIndex)).toggleClass('invisible visible');
-            $(slideImg.eq(slideIndex + 1)).toggleClass('invisible visible');
-            slideIndex++;
-
-
-        } else {
-            $(slideImg.eq(slideIndex)).toggleClass('invisible visible');
-            slideIndex = 0;
-            $(slideImg.eq(slideIndex)).toggleClass('invisible visible');
-
-        }
-
-    });
-
 
     // Validate form
 
