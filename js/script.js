@@ -59,11 +59,11 @@ $(document).ready(function() {
         // Handles the sliding width dynamically updated slider wrapper width
 
       function launchSlider(sliderWrapperWidth) {
-        
-        var slidesWidth = sliderWrapperWidth * slideImg.length;
-        slides.css('width', slidesWidth);
 
-        $(leftArrow).on('click', function() {
+        var slidesWidth = sliderWrapperWidth * slideImg.length;
+        slides.css('width', slidesWidth).css('left', (slideIndex * sliderWrapperWidth) * -1);
+
+        $(leftArrow).off().on('click', function() {
             var slideValue = sliderWrapper.innerWidth();
             if (slideIndex > 0) {
 
@@ -80,7 +80,7 @@ $(document).ready(function() {
         });
 
 
-        $(rightArrow).on('click', function() {
+        $(rightArrow).off().on('click', function() {
             var slideValue = sliderWrapper.innerWidth();
             if (slideIndex < slideImg.length - 1) {
 
