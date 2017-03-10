@@ -6,7 +6,8 @@
 .contact-background {
 
   width: 100%;
-  background-color: map-get($mainColors, dark-blue);
+  // background-color: map-get($mainColors, dark-blue);
+  background-color: transparentize(map-get($mainColors, dark-blue), 0.10);
 }
 
 /*form */
