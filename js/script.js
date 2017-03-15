@@ -41,14 +41,14 @@ $(document).ready(function() {
         slides = $('.slides'),
         sliderWrapper = $('.slider-wrapper');
         slideImg = $('.slides').find('li'),
-        slideIndex = 0,
+        slideIndex = 1,
         sliderWrapperWidthInitial = sliderWrapper.innerWidth();
         // Making copies of li elements
         firstSlideCopy = slideImg.first().clone();
         lastSlideCopy = slideImg.last().clone();
         firstSlideCopy.appendTo(slides);
         lastSlideCopy.prependTo(slides);
-        // Updating array length - tutaj mam największy problem, bo nadpisuję zmienną, ale inaczej nie jestem w stanie dynamicznie uaktualnić długości tablicy z elementami li, która jest mi potrzebna do ustalenia szerokości kontenera i szerokości poszczególnych obrazków
+        // Updating array length
         slideImg = $('.slides').find('li');
 
         // Setting each li element width
@@ -65,16 +65,27 @@ $(document).ready(function() {
 
         $(leftArrow).off().on('click', function() {
             var slideValue = sliderWrapper.innerWidth();
-            if (slideIndex > 0) {
 
                 $(slides).animate({
 
                     left: '+=' + slideValue
 
-                }, 500);
+                }, 500, function() {
+
+                  if (slideIndex === 0) {
+
+                      $(slides).animate({
+
+                        left: '-=' + slideValue * (slideImg.length - 2),
+                      },0);
+
+                    slideIndex = slideImg.length - 2;
+
+                  }
+                });
 
                 slideIndex--;
-            }
+
 
 
         });
@@ -82,16 +93,28 @@ $(document).ready(function() {
 
         $(rightArrow).off().on('click', function() {
             var slideValue = sliderWrapper.innerWidth();
-            if (slideIndex < slideImg.length - 1) {
+
 
                 $(slides).animate({
 
                     left: '-=' + slideValue
 
-                }, 500);
+                }, 500, function() {
+
+                  if (slideIndex === slideImg.length - 1) {
+
+                    $(slides).animate( {
+
+                      left: '+=' + slideValue * (slideImg.length - 2)
+                    }, 0)
+
+                    slideIndex = 1;
+
+                  }
+                });
 
                 slideIndex++;
-            }
+
 
 
         });
@@ -208,6 +231,9 @@ $(document).ready(function() {
 
 
     });
+
+    // Google Maps
+
 
 
 });

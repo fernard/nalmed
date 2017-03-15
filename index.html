@@ -10,7 +10,7 @@
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/script.js" charset="utf-8"></script>
 
-  </head>
+</head>
 
 
 
@@ -82,8 +82,9 @@
                 <div class="slider-wrapper">
                     <ul class="slides">
 
-                        <li><img src="img/bg.png" alt="Background"></li>
-                        <li><img src="img/bg-2.png" alt="Background"></li>
+                        <li><img src="img/bg-forrest.png" alt="Forrest"></li>
+                        <li><img src="img/bg-nalmed.png" alt="Centrum Terapii Uzależnień i zaburzeń NALMED"></li>
+                        <li><img src="img/bg-room.png" alt="Pokoje w NALMED"></li>
 
                     </ul>
                 </div>
@@ -273,72 +274,157 @@
                     </div>
                 </div>
             </article>
-            <div id="map">
-              <div class="contact-background">
+            <div class="contact-background">
 
-                  <article class="container">
-                      <div class="row">
+                <article class="container">
+                    <div class="row">
 
-                          <div class="col-lg-6">
-                              <form id="myForm" method="post" action="mail.php">
-                                  <input id="nameInput" type="text" name="name" value="" placeholder="Twoje Imię"><br>
-                                  <input id="emailInput" type="email" name="email" value="" placeholder="Twój Email"><br>
-                                  <input id="subject" type="text" name="subject" value="" placeholder="Temat"><br>
-                                  <textarea id="message" name="message" rows="8" placeholder="Wiadomość.."></textarea>
-                                  <div class="error-message"></div>
-                                  <input type="submit" name="button" value="WYŚLIJ">
-                              </form>
-                          </div>
+                        <div class="col-lg-6">
+                            <form id="myForm" method="post" action="mail.php">
+                                <input id="nameInput" type="text" name="name" value="" placeholder="Twoje Imię"><br>
+                                <input id="emailInput" type="email" name="email" value="" placeholder="Twój Email"><br>
+                                <input id="subject" type="text" name="subject" value="" placeholder="Temat"><br>
+                                <textarea id="message" name="message" rows="8" placeholder="Wiadomość.."></textarea>
+                                <div class="error-message"></div>
+                                <input type="submit" name="button" value="WYŚLIJ">
+                            </form>
+                        </div>
 
-                          <div class="col-lg-6">
-                              <div class="contact-wrapper">
-                                  <div class="contact-info">
-                                      <div class="contact-thumb">
-                                      </div>
-                                      <p>
-                                          ul. Parkowa 15<br> 05-822 Milanówek <br> ul. J.U. Niemcewicza 54 <br> Warszawa Wesoła
-                                      </p>
-                                  </div>
+                        <div class="col-lg-6">
+                            <div class="contact-wrapper">
+                                <div class="contact-info">
+                                    <div class="contact-thumb">
+                                    </div>
+                                    <p>
+                                        ul. Parkowa 15<br> 05-822 Milanówek <br> ul. J.U. Niemcewicza 54 <br> Warszawa Wesoła
+                                    </p>
+                                </div>
 
-                                  <div class="contact-info">
-                                      <div class="contact-thumb">
-                                      </div>
-                                      <p>
-                                          <a href="biuro@nalmed.pl">biuro@nalmed.pl</a><br>
-                                          <a href="biuro@nalmed.pl">iwona.kubis@nalmed.pl</a><br>
-                                          <a href="biuro@nalmed.pl">tomasz.szary@nalmed.pl</a><br>
+                                <div class="contact-info">
+                                    <div class="contact-thumb">
+                                    </div>
+                                    <p>
+                                        <a href="biuro@nalmed.pl">biuro@nalmed.pl</a><br>
+                                        <a href="biuro@nalmed.pl">iwona.kubis@nalmed.pl</a><br>
+                                        <a href="biuro@nalmed.pl">tomasz.szary@nalmed.pl</a><br>
 
-                                      </p>
-                                  </div>
+                                    </p>
+                                </div>
 
-                                  <div class="contact-info">
-                                      <div class="contact-thumb">
-                                      </div>
-                                      <p>
-                                          <a href="tel:+48663090006">663 090 006</a><br>
-                                          <a href="tel:+48663090006">663 180 080</a><br>
-                                          <a href="tel:+48663180185">663 180 185</a><br>
-                                      </p>
-                                  </div>
-                              </div>
+                                <div class="contact-info">
+                                    <div class="contact-thumb">
+                                    </div>
+                                    <p>
+                                        <a href="tel:+48663090006">663 090 006</a><br>
+                                        <a href="tel:+48663090006">663 180 080</a><br>
+                                        <a href="tel:+48663180185">663 180 185</a><br>
+                                    </p>
+                                </div>
+                            </div>
 
-                          </div>
-
+                        </div>
 
 
-                      </div>
 
-                  </article>
-              </div>
+                    </div>
 
+                </article>
             </div>
+
+            <div id="map"></div>
 
         </footer>
 
 
     </section>
 
+    <script>
+        var map;
 
+        function initMap() {
+            var myLatLng = {
+                lat: 52.1331211,
+                lng: 20.657210299999974
+            };
+
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 16,
+                center: myLatLng,
+                styles: [{
+                        "featureType": "administrative",
+                        "elementType": "labels.text.fill",
+                        "stylers": [{
+                            "color": "#444444"
+                        }]
+                    },
+                    {
+                        "featureType": "landscape",
+                        "elementType": "all",
+                        "stylers": [{
+                            "color": "#f2f2f2"
+                        }]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "all",
+                        "stylers": [{
+                            "visibility": "off"
+                        }]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "all",
+                        "stylers": [{
+                                "saturation": -100
+                            },
+                            {
+                                "lightness": 45
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "all",
+                        "stylers": [{
+                            "visibility": "simplified"
+                        }]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "elementType": "labels.icon",
+                        "stylers": [{
+                            "visibility": "off"
+                        }]
+                    },
+                    {
+                        "featureType": "transit",
+                        "elementType": "all",
+                        "stylers": [{
+                            "visibility": "off"
+                        }]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "all",
+                        "stylers": [{
+                                "color": "#46bcec"
+                            },
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    }
+                ],
+            });
+
+            var marker = new google.maps.Marker({
+                position: myLatLng,
+                map: map,
+                title: 'Centrum Terapii Uzależnień i Zaburzeń Nalmed'
+            });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD5pi56IdWtbcUAqQL8qtkS9QVC38GSHKQ&callback=initMap" async defer></script>
 </body>
 
 </html>
