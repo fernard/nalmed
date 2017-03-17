@@ -1,169 +1,136 @@
 #contact {
-
-  margin-bottom: 0;
-  position: relative;
+    margin-bottom: 0;
+    position: relative;
 }
 
 .contact-background {
-
-  width: 100%;
-  // background-color: map-get($mainColors, dark-blue);
-  background-color: transparentize(map-get($mainColors, dark-blue), 0.15);
-  z-index: 1;
-  position: relative;
+    width: 100%;
+    // background-color: map-get($mainColors, dark-blue);
+    background-color: transparentize(map-get($mainColors, dark-blue), 0.15);
+    z-index: 1;
+    position: relative;
 }
-
 /*form */
 form {
+    @include formPlaceholder;
+    margin-top: 2rem;
+    display: block;
 
-  @include formPlaceholder;
-  margin-top: 2rem;
-  display: block;
-  input, textarea {
-
-    margin-bottom: 1.5rem;
-
-}
-  input {
-
-    width: 70%;
-  }
-
-  textarea {
-    width: 100%;
-  }
-
-  input[type="text"],input[name="email"], textarea {
-
-  background: transparent;
-  border: 2px solid white;
-  font-size: 2rem;
-  color: #a1b8ca;
-  padding: 0.3rem 0;
-  border-radius: 3px;
-
-}
-
-.error-message {
-  @include fontProp(medium, 700);
-  display: none;
-  background-color: map-get($mainColors,dark-red);
-  color: white;
-  width: 50%;
-  padding: 0.5rem;
-  text-align: center;
-  margin-bottom: 1rem;
-  border: 2px solid white;
-  border-radius: 3px;
-}
-
-  input[type="submit"] {
-
-    background-color: map-get($mainColors,sea-blue);
-    @include fontProp(2.1rem, 700);
-    border: none;
-    border-radius: 3px;
-    width: 40%;
-    color: white;
-    padding: 0.5rem 0;
-  }
-
-}
-
-/*contact-info */
-
-.contact-wrapper {
-
-  border: 1px solid red;
-  display: flex;
-  flex-flow: row wrap;
-  color: white;
-  font-weight: 500;
-  margin-top: 2rem;
-
-  @include breakpoints($media-xs) {
-
-    flex-flow: column nowrap;
-
-  };
-
-  .contact-info {
-
-    border: 1px solid blue;
-    width: 50%;
-    text-align: center;
-    @include breakpoints($media-xs) {
-
-      width: 100%;
-
-    };
-    &:nth-of-type(2) {
-
-      .contact-thumb {
-
-        background-position: -54px 0;
-      }
-    }
-    &:last-of-type {
-
-
-      border: 1px solid green;
-      margin-left: 25%;
-      @include breakpoints($media-xs) {
-
-        margin-left: 0;
-      };
-
-      .contact-thumb {
-
-        background-position: -107px 0;
-      }
+    input,
+    textarea {
+        margin-bottom: 1.5rem;
     }
 
-
-    .contact-thumb {
-      width: 52px;
-      height: 52px;
-      background-image: url('../img/contact.png');
-      background-repeat: no-repeat;
-      background-position: 0;
-      margin: 0 auto;
-      border: 1px solid red;
+    input {
+        width: 70%;
     }
-  }
 
-  p {
+    textarea {
+        width: 100%;
+    }
 
-    line-height: 3.5rem;
-    a {
-
-      color: white;
-      border-top: 2px solid rgba(255,255,255,0);
-      border-bottom: 2px solid rgba(255,255,255,0);
-      padding: 2rem 0;
-      transition: all 0.3s ease-out;
-
-      &:hover {
-
+    input[name="email"],
+    input[type="text"],
+    textarea {
+        background: transparent;
+        border: 2px solid white;
+        font-size: 2rem;
+        color: #a1b8ca;
         padding: 0.3rem 0;
-        border-top: 2px solid rgba(255,255,255,0.6);
-        border-bottom: 2px solid rgba(255,255,255,0.6);
-
-      }
+        border-radius: 3px;
     }
 
+    .error-message {
+        @include fontProp(medium, 700);
+        display: none;
+        background-color: map-get($mainColors,dark-red);
+        color: white;
+        width: 50%;
+        padding: 0.5rem;
+        text-align: center;
+        margin-bottom: 1rem;
+        border: 2px solid white;
+        border-radius: 3px;
+    }
 
-  }
-
+    input[type="submit"] {
+        background-color: map-get($mainColors,sea-blue);
+        @include fontProp(2.1rem, 700);
+        border: none;
+        border-radius: 3px;
+        width: 40%;
+        color: white;
+        padding: 0.5rem 0;
+    }
 }
+/*contact-info */
+.contact-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    color: white;
+    font-weight: 500;
+    margin-top: 2rem;
+    @include breakpoints($media-xs) {
+        flex-flow: column nowrap;
+    };
 
+    .contact-info {
+        width: 50%;
+        text-align: center;
+        @include breakpoints($media-xs) {
+            width: 100%;
+        };
+
+        &:nth-of-type(2) {
+            .contact-thumb {
+                background-position: -54px 0;
+            }
+        }
+
+        &:last-of-type {
+            margin-left: 25%;
+            @include breakpoints($media-xs) {
+                margin-left: 0;
+            };
+
+            .contact-thumb {
+                background-position: -107px 0;
+            }
+        }
+
+        .contact-thumb {
+            width: 52px;
+            height: 52px;
+            background-image: url('../img/contact.png');
+            background-repeat: no-repeat;
+            background-position: 0;
+            margin: 0 auto;
+        }
+    }
+
+    p {
+        line-height: 3.5rem;
+
+        a {
+            color: white;
+            border-top: 2px solid rgba(255,255,255,0);
+            border-bottom: 2px solid rgba(255,255,255,0);
+            padding: 2rem 0;
+            transition: all 0.3s ease-out;
+
+            &:hover {
+                padding: 0.3rem 0;
+                border-top: 2px solid rgba(255,255,255,0.6);
+                border-bottom: 2px solid rgba(255,255,255,0.6);
+            }
+        }
+    }
+}
 // Google Map
 
 #map {
-
-  @include posAbsProp(20%,0,auto,auto);
-  width: 100%;
-  height: 150%;
-  z-index: -1;
-
+    @include posAbsProp(20%,0,auto,auto);
+    width: 100%;
+    height: 150%;
+    z-index: -1;
 }

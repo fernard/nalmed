@@ -1,15 +1,11 @@
-
 h2 {
     text-align: center;
     @include fontProp(4.5rem, 800);
     color: map-get($mainColors, main-font);
-    border: 1px solid red;
     display: block;
     margin-bottom: 5rem;
-
     @include breakpoints($media-xs) {
-
-      font-size: 3.5rem;
+        font-size: 3.5rem;
     }
 
     &::after {
@@ -25,7 +21,6 @@ h2 {
 h3 {
     @include fontProp(2rem, 700);
     color: map-get($mainColors, main-font);
-    border: 1px solid red;
     display: inline-block;
     margin: 3rem auto;
     text-align: center;
@@ -78,16 +73,12 @@ h3 {
         }
 
         ul {
-            border: 1px solid blue;
-
             li {
-
                 text-align: center;
                 margin: 0 auto;
-
                 @include breakpoints($media-xs) {
-                  padding: 0.5rem 1rem;
-                  width: 70%;
+                    padding: 0.5rem 1rem;
+                    width: 70%;
                 }
 
                 &::before {
@@ -120,11 +111,8 @@ h3 {
         position: relative;
         margin: 0 auto 2rem;
         text-align: center;
-        border: 1px solid blue;
-
         @include breakpoints($media-xs) {
-
-          font-size: 1.8rem;
+            font-size: 1.8rem;
         }
 
         &::before {
@@ -136,12 +124,10 @@ h3 {
             background-image: url('../img/cross.png');
             background-size: contain;
             transition: all 1s;
-
             @include breakpoints($media-xs) {
-
-              width: 25px;
-              height: 25px;
-              top: 30%;
+                width: 25px;
+                height: 25px;
+                top: 30%;
             }
         }
 
@@ -156,17 +142,15 @@ h3 {
 
     ul {
         margin: 0 auto;
-        border: 1px solid blue;
         line-height: 3rem;
 
         li {
             text-align: center;
-            padding: 0.5rem 0.5rem;
-
+            padding: 0.5rem;
             @include breakpoints($media-sm) {
-
-              padding: 0.5rem 1.5rem;
+                padding: 0.5rem 1.5rem;
             }
+
             &::before {
                 @include listBullet(white);
             }

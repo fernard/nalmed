@@ -46,7 +46,7 @@ header {
             .hamburger {
                 width: 40px;
                 height: 36px;
-                border: 2px solid map-get($mainColors, beige-balls);
+                border: 2px solid map-get($mainColors, beige);
                 transform: rotate(0deg);
                 transition: 0.4s ease-in-out;
 
@@ -248,7 +248,6 @@ header {
     .slides {
         @include posAbsProp(auto,0,auto,auto);
         clear: both;
-
 
         li {
             float: left;
