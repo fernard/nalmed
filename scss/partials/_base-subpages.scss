@@ -257,12 +257,16 @@
 }
 /*workshops*/
 .workshop-intro {
-    margin-bottom: 5rem;
+    margin-bottom: 3rem;
+    p {
 
-    span {
-        @include fontProp(1.8rem, 700);
-        color: map-get($mainColors, dark-blue);
+      text-align: left;
+      span {
+          @include fontProp(1.8rem, 700);
+          color: map-get($mainColors, dark-blue);
+      }
     }
+
 }
 
 .workshop-desc {
