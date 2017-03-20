@@ -6,7 +6,7 @@ $(document).ready(function() {
     $('body').removeClass('preload');
 
 
-    // Header scroll
+    // Header scrolls
 
     $(window).scroll(function() {
         var scrollValue = $(this).scrollTop();
@@ -236,11 +236,9 @@ $(document).ready(function() {
 
     // Google Maps
 
-  
 
-    var googleScript = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD5pi56IdWtbcUAqQL8qtkS9QVC38GSHKQ&callback=initMap';
 
-      var map;
+    var googleScript = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD5pi56IdWtbcUAqQL8qtkS9QVC38GSHKQ';
 
       function initMap() {
           var myLatLng = {
