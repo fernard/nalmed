@@ -33,18 +33,12 @@
 
 .numbers {
     @include fontProp(2.6rem, 700);
+    @include flexProp(column, center, center);
     height: 150px;
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
 
     &::after {
-        content: '';
-        display: block;
-        width: 60%;
-        height: 2px;
+        @include pseudoElems(60%,2px);
         background-color: map-get($mainColors, light-blue);
     }
 
@@ -80,15 +74,13 @@
         }
 
         .back {
+            @include flexProp(row, center, center);
+            @include fontProp(2.5rem, 700);
             transform: rotateY(180deg);
             height: 292px;
             background-color: map-get($mainColors, dark-blue);
             box-shadow: inset 0 0 0 5px rgba(255,255,255,0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
             color: map-get($mainColors, light-blue);
-            @include fontProp(2.5rem, 700);
         }
 
         ul {
@@ -161,14 +153,13 @@
     text-align: center;
 
     &:hover .therapy-img {
-        background-position: -28px -111px;
+        background-position: 0 -111px;
     }
 
     .therapy-img {
-        width: 80px;
+        width: 100px;
         height: 70px;
         background-image: url('../img/other-therapies.png');
-        background-position: -28px -19px;
         margin: 0 auto;
         transition: all 0.3s;
     }
@@ -178,30 +169,18 @@
     .row {
         .col-lg-4,
         .col-sm-8 {
-            &:nth-of-type(2) {
-                .therapy-wrapper {
-                    text-align: center;
+            @for $i from 1 through 3 {
+                &:nth-of-type(#{$i}) {
+                    .therapy-wrapper {
+                        text-align: center;
 
-                    &:hover .therapy-img {
-                        background-position: -130px -111px;
-                    }
+                        &:hover .therapy-img {
+                            background-position: (-100px * ($i - 1)) -111px;
+                        }
 
-                    .therapy-img {
-                        background-position: -130px -19px;
-                    }
-                }
-            }
-
-            &:nth-of-type(3) {
-                .therapy-wrapper {
-                    text-align: center;
-
-                    &:hover .therapy-img {
-                        background-position: -210px -111px;
-                    }
-
-                    .therapy-img {
-                        background-position: -210px -19px;
+                        .therapy-img {
+                            background-position: (-100px * ($i - 1)) -19px;
+                        }
                     }
                 }
             }
@@ -211,44 +190,18 @@
     .row:last-of-type {
         .col-lg-4,
         .col-sm-8 {
-            &:nth-of-type(1) {
-                .therapy-wrapper {
-                    text-align: center;
+            @for $i from 1 through 3 {
+                &:nth-of-type(#{$i}) {
+                    .therapy-wrapper {
+                        text-align: center;
 
-                    &:hover .therapy-img {
-                        background-position: -298px -111px;
-                    }
+                        &:hover .therapy-img {
+                            background-position: (-100px * ($i + 2)) -111px;
+                        }
 
-                    .therapy-img {
-                        background-position: -298px -19px;
-                    }
-                }
-            }
-
-            &:nth-of-type(2) {
-                .therapy-wrapper {
-                    text-align: center;
-
-                    &:hover .therapy-img {
-                        background-position: -395px -111px;
-                    }
-
-                    .therapy-img {
-                        background-position: -395px -19px;
-                    }
-                }
-            }
-
-            &:nth-of-type(3) {
-                .therapy-wrapper {
-                    text-align: center;
-
-                    &:hover .therapy-img {
-                        background-position: -498px -111px;
-                    }
-
-                    .therapy-img {
-                        background-position: -498px -19px;
+                        .therapy-img {
+                            background-position: (-100px * ($i + 2)) -19px;
+                        }
                     }
                 }
             }
@@ -258,15 +211,15 @@
 /*workshops*/
 .workshop-intro {
     margin-bottom: 3rem;
+
     p {
+        text-align: left;
 
-      text-align: left;
-      span {
-          @include fontProp(1.8rem, 700);
-          color: map-get($mainColors, dark-blue);
-      }
+        span {
+            @include fontProp(1.8rem, 700);
+            color: map-get($mainColors, dark-blue);
+        }
     }
-
 }
 
 .workshop-desc {
@@ -307,9 +260,7 @@
 }
 
 .workshop-schedule {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    @include flexProp(column,center, auto);
 
     img {
         opacity: 1;

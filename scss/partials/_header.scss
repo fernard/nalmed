@@ -16,10 +16,9 @@ header {
     top: 0;
 
     .head-wrapper {
+        @include flexProp(row, center, space-between);
         height: 116px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+
         /*Logo*/
         .logo {
             img {
@@ -101,11 +100,10 @@ header {
                         /*Sub-Menu*/
                         ul {
                             @include posAbsProp(100,0,auto,auto);
+                            @include flexProp(column, auto, auto);
                             visibility: hidden;
                             opacity: 0;
                             background-color: map-get($mainColors, dark-blue);
-                            display: flex;
-                            flex-direction: column;
                             z-index: 0;
                             transform: translateY(-20%);
                             transition: all 0.5s;
@@ -168,11 +166,9 @@ header {
 
     .motto-wrapper {
         @include posAbsProp(auto,0,auto,0);
+        @include flexProp(row, center, center);
         height: 100%;
         background-color: rgba(0,0,0, 0.65);
-        display: flex;
-        align-items: center;
-        justify-content: center;
         width: 100%;
         z-index: 1;
         @include breakpoints($media-md) {
@@ -193,7 +189,6 @@ header {
             @include fontProp(2.3rem, 700);
             padding: 0 4rem;
             width: 65%;
-            text-align: center;
             color: white;
             @include breakpoints($media-md) {
                 width: 100%;
@@ -202,11 +197,8 @@ header {
 
             &::after,
             &::before {
-                content: '';
-                display: block;
-                width: 60%;
+                @include pseudoElems(60%,3px);
                 margin: 0 auto;
-                height: 3px;
                 background-color: map-get($mainColors, sea-blue);
             }
 

@@ -84,6 +84,22 @@ $media-xl: '(min-width: 1200px)';
   right: $right;
 }
 
+@mixin flexProp($direction,$align,$justify) {
+
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+@mixin pseudoElems($width, $height) {
+
+  content: '';
+  display: block;
+  width: $width;
+  height: $height;
+}
+
 @mixin listBullet($color) {
 
   content: '';
@@ -140,4 +156,12 @@ ul {
 
   list-style-type: none;
   text-align: center;
+}
+
+@for $i from 1 through 6 {
+
+  h#{$i} {
+    text-align: center;
+  }
+
 }

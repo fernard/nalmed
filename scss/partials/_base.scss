@@ -1,5 +1,4 @@
 h2 {
-    text-align: center;
     @include fontProp(4.5rem, 800);
     color: map-get($mainColors, main-font);
     display: block;
@@ -9,12 +8,9 @@ h2 {
     }
 
     &::after {
-        content: '';
-        display: block;
-        width: 60%;
+        @include pseudoElems(60%,3px);
         margin: 0 auto;
         background-color: map-get($mainColors, dark-blue);
-        height: 3px;
     }
 }
 
@@ -23,33 +19,23 @@ h3 {
     color: map-get($mainColors, main-font);
     display: inline-block;
     margin: 3rem auto;
-    text-align: center;
 
     &::after {
-        content: '';
-        display: block;
-        width: 80%;
+        @include pseudoElems(80%,3px);
         margin: 0 auto;
         background-color: map-get($mainColors, sea-blue);
-        height: 3px;
     }
 }
 /*about-us*/
 #about-us {
     .row {
         .col-lg-4 {
-            &:nth-of-type(2) {
-                .about-us-col {
-                    .mini-img {
-                        background-position: -123px 25px;
-                    }
-                }
-            }
-
-            &:nth-of-type(3) {
-                .about-us-col {
-                    .mini-img {
-                        background-position: -250px 25px;
+            @for $i from 1 through 3 {
+                &:nth-of-type(#{$i}) {
+                    .about-us-col {
+                        .mini-img {
+                            background-position: (-120px * ($i - 1)) 20px;
+                        }
                     }
                 }
             }
@@ -65,10 +51,12 @@ h3 {
 
         .mini-img {
             @include smallImage;
+            width: 130px;
+            height: 130px;
             border: 5px solid map-get($mainColors, sea-blue);
             background-image: url('../img/about-us.png');
             background-repeat: no-repeat;
-            background-position: 15px 25px;
+            background-position: 0 20px;
             transition: all 0.5s;
         }
 
@@ -116,11 +104,8 @@ h3 {
         }
 
         &::before {
-            content: '';
-            display: block;
+            @include pseudoElems(34px,34px);
             @include posAbsProp(25%,2%,auto,auto);
-            width: 34px;
-            height: 34px;
             background-image: url('../img/cross.png');
             background-size: contain;
             transition: all 1s;

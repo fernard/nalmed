@@ -29,9 +29,7 @@ form {
         width: 100%;
     }
 
-    input[name="email"],
-    input[type="text"],
-    textarea {
+    input:not([type='submit']), textarea {
         background: transparent;
         border: 2px solid white;
         font-size: 2rem;
