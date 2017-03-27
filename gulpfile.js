@@ -5,7 +5,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var autoprefixer = require('gulp-autoprefixer');
 var plumber = require('gulp-plumber');
 var util = require('gulp-util');
-
+var jquery = require('gulp-jquery');
 
 
 
@@ -23,7 +23,7 @@ gulp.task("sass", function() {
         }))
         .pipe(sourcemaps.write())
         .pipe(autoprefixer({
-            browsers: ['> 1%'], //największy zakres ['> 1%'] - więcej niż 99% procent przeglądarek
+            browsers: ['> 1%'],
             cascade: false
         }))
         .pipe(gulp.dest('css'))
