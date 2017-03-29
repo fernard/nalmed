@@ -1,6 +1,5 @@
 h2 {
-    @include fontProp(4.5rem, 800);
-    color: map-get($mainColors, main-font);
+    @include fontProp(4.5rem, 800, map-get($mainColors, main-font));
     display: block;
     margin-bottom: 5rem;
     @include breakpoints($media-xs) {
@@ -15,8 +14,7 @@ h2 {
 }
 
 h3 {
-    @include fontProp(2rem, 700);
-    color: map-get($mainColors, main-font);
+    @include fontProp(2rem, 700, map-get($mainColors, main-font));
     display: inline-block;
     margin: 3rem auto;
 
@@ -51,8 +49,7 @@ h3 {
 
         .mini-img {
             @include smallImage;
-            width: 130px;
-            height: 130px;
+            @include widthAndHeight(130px,130px);
             border: 5px solid map-get($mainColors, sea-blue);
             background-image: url('../img/about-us.png');
             background-repeat: no-repeat;
@@ -110,8 +107,7 @@ h3 {
             background-size: contain;
             transition: all 1s;
             @include breakpoints($media-xs) {
-                width: 25px;
-                height: 25px;
+                 @include widthAndHeight(25px,25px);
                 top: 30%;
             }
         }
@@ -149,11 +145,34 @@ h3 {
     background-repeat: no-repeat;
     background-position: 0;
     background-size: cover;
+    overflow: hidden;
+    position: relative;
+
+    .photo-overlay {
+        @include posAbsProp(0,0,auto,auto);
+        @include flexProp(column,center,center);
+        @include widthAndHeight(100%,100%);
+        border-radius: 50%;
+        background-color: map-get($mainColors, sea-blue);
+        opacity: 0.8;
+        transform-origin: top left;
+        transition: all 0.4s;
+        transform: rotate(-90deg);
+
+        a {
+            color: white;
+            font-weight: 600;
+        }
+    }
 }
 
 #team {
     .team-member-col {
         text-align: center;
+
+        &:hover .photo-overlay {
+            transform: rotate(0deg);
+        }
     }
 
     .col-md-4 {

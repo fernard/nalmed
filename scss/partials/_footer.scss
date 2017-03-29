@@ -29,7 +29,10 @@ form {
         width: 100%;
     }
 
-    input:not([type='submit']), textarea {
+
+
+    input:not([type='submit']),
+    textarea {
         background: transparent;
         border: 2px solid white;
         font-size: 2rem;
@@ -38,11 +41,17 @@ form {
         border-radius: 3px;
     }
 
-    .error-message {
-        @include fontProp(medium, 700);
+    input:focus {
+        font-size: 80%;
+        padding: 0.8rem 0;
+        transition: 0.2s all;
+
+    }
+
+      .error-message {
+        @include fontProp(medium, 700, white);
         display: none;
         background-color: map-get($mainColors,dark-red);
-        color: white;
         width: 50%;
         padding: 0.5rem;
         text-align: center;
@@ -53,11 +62,10 @@ form {
 
     input[type="submit"] {
         background-color: map-get($mainColors,sea-blue);
-        @include fontProp(2.1rem, 700);
+        @include fontProp(2.1rem, 700, white);
         border: none;
         border-radius: 3px;
         width: 40%;
-        color: white;
         padding: 0.5rem 0;
     }
 }
@@ -97,8 +105,7 @@ form {
         }
 
         .contact-thumb {
-            width: 52px;
-            height: 52px;
+            @include widthAndHeight(52px,52px);
             background-image: url('../img/contact.png');
             background-repeat: no-repeat;
             background-position: 0;
@@ -128,7 +135,6 @@ form {
 
 #map {
     @include posAbsProp(20%,0,auto,auto);
-    width: 100%;
-    height: 150%;
+    @include widthAndHeight(100%,150%);
     z-index: -1;
 }

@@ -19,8 +19,7 @@
     }
 
     .molecule {
-        width: 100%;
-        height: 350px;
+        @include widthAndHeight(100%,350px);
         position: relative;
 
         img {
@@ -32,10 +31,9 @@
 }
 
 .numbers {
-    @include fontProp(2.6rem, 700);
+    @include fontProp(2.6rem, 700, inherit);
     @include flexProp(column, center, center);
-    height: 150px;
-    width: 100%;
+    @include widthAndHeight(100%,150px);
 
     &::after {
         @include pseudoElems(60%,2px);
@@ -43,8 +41,7 @@
     }
 
     span {
-        @include fontProp(7rem,800);
-        color: map-get($mainColors, sea-blue);
+        @include fontProp(7rem,800, map-get($mainColors, sea-blue));
     }
 }
 /*Promo*/
@@ -52,8 +49,7 @@
     &:hover .promo {
         transform: rotateY(180deg);
     }
-    width: 100%;
-    height: 292px;
+    @include widthAndHeight(100%,292px);
     position: relative;
     perspective: 800px;
     margin-bottom: 8rem;
@@ -75,12 +71,11 @@
 
         .back {
             @include flexProp(row, center, center);
-            @include fontProp(2.5rem, 700);
+            @include fontProp(2.5rem, 700, map-get($mainColors, light-blue));
             transform: rotateY(180deg);
             height: 292px;
             background-color: map-get($mainColors, dark-blue);
             box-shadow: inset 0 0 0 5px rgba(255,255,255,0.4);
-            color: map-get($mainColors, light-blue);
         }
 
         ul {
@@ -91,20 +86,19 @@
                 padding: 1rem 0;
 
                 &:nth-child(odd) {
+                    @include fontProp(2rem, 700, white);
                     padding: 1.5rem 0;
                     background-color: map-get($mainColors, sea-blue);
                     box-shadow: inset 0 0 0 5px lighten(map-get($mainColors, sea-blue),20);
-                    color: white;
-                    @include fontProp(2rem, 700);
                 }
 
                 &:nth-child(even) {
-                    @include fontProp(1.8rem, 700);
+                    @include fontProp(1.8rem, 700, inherit);
                     background-color: lighten(map-get($mainColors, beige), 10);
                 }
 
                 &:nth-child(4) {
-                    @include fontProp(2rem, 800);
+                    @include fontProp(2rem, 800, inherit);
                 }
 
                 &:last-of-type {
@@ -123,8 +117,7 @@
     font-weight: 600;
 
     span {
-        @include fontProp(20px,700);
-        color: map-get($mainColors, dark-blue);
+        @include fontProp(20px,700, map-get($mainColors, dark-blue));
     }
 }
 
@@ -157,8 +150,7 @@
     }
 
     .therapy-img {
-        width: 100px;
-        height: 70px;
+        @include widthAndHeight(100px,70px);
         background-image: url('../img/other-therapies.png');
         margin: 0 auto;
         transition: all 0.3s;
@@ -216,15 +208,14 @@
         text-align: left;
 
         span {
-            @include fontProp(1.8rem, 700);
-            color: map-get($mainColors, dark-blue);
+            @include fontProp(1.8rem, 700, map-get($mainColors, dark-blue));
         }
     }
 }
 
 .workshop-desc {
     ul {
-        @include fontProp(auto, 600);
+        @include fontProp(auto, 600, inherit);
         margin: 0 auto;
         line-height: 3rem;
         border: 3px solid map-get($mainColors, beige);
@@ -243,10 +234,8 @@
             }
 
             &:first-of-type {
-                @include fontProp(2rem, 700);
-                background-color: red;
+                @include fontProp(2rem, 700, white);
                 background-color: map-get($mainColors, sea-blue);
-                color: white;
             }
             @include breakpoints($media-sm) {
                 padding: 1rem 1.8rem;
@@ -273,7 +262,7 @@
     }
 
     p {
-        @include fontProp(2rem, 700);
+        @include fontProp(2rem, 700, inherit);
         text-align: center;
         margin-bottom: 5rem;
         @include breakpoints($media-xl) {

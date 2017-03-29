@@ -5,7 +5,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var autoprefixer = require('gulp-autoprefixer');
 var plumber = require('gulp-plumber');
 var util = require('gulp-util');
-var jquery = require('gulp-jquery');
+
 
 
 

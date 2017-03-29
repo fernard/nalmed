@@ -18,12 +18,10 @@ header {
     .head-wrapper {
         @include flexProp(row, center, space-between);
         height: 116px;
-
         /*Logo*/
         .logo {
             img {
-                width: 80%;
-                height: auto;
+                @include widthAndHeight(80%,auto);
                 @include breakpoints($media-sm) {
                     width: 100%;
                 }
@@ -43,8 +41,7 @@ header {
             }
             // Mobile-menu
             .hamburger {
-                width: 40px;
-                height: 36px;
+                @include widthAndHeight(40px,36px);
                 border: 2px solid map-get($mainColors, beige);
                 transform: rotate(0deg);
                 transition: 0.4s ease-in-out;
@@ -156,8 +153,7 @@ header {
 /*Slider*/
 #slider {
     margin-top: 120px;
-    width: 100%;
-    height: 350px;
+    @include widthAndHeight(100%,350px);
     position: relative;
     z-index: 0;
     @include breakpoints($media-md) {
@@ -186,13 +182,12 @@ header {
         }
 
         h1 {
-            @include fontProp(2.3rem, 700);
+            @include fontProp(2.3rem, 700, white);
             padding: 0 4rem;
             width: 65%;
-            color: white;
             @include breakpoints($media-md) {
                 width: 100%;
-                @include fontProp(3rem, 700);
+                @include fontProp(3rem, 700, white);
             }
 
             &::after,
@@ -232,8 +227,7 @@ header {
 }
 
 .slider-wrapper {
-    width: 100%;
-    height: 100%;
+    @include widthAndHeight(100%,100%);
     position: relative;
     overflow: hidden;
 
@@ -245,8 +239,7 @@ header {
             float: left;
 
             img {
-                width: auto;
-                height: 100%;
+                @include widthAndHeight(auto,100%);
                 @include breakpoints($media-md) {
                     height: 650px;
                 }
