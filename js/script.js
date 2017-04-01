@@ -170,6 +170,20 @@ $(document).ready(function() {
 
     });
 
+    // Handle slick-carousel
+
+    $('.opinion-carousel').slick({
+        autoplay: true,
+        infinite: true,
+        responsive: [{
+            breakpoint: 568,
+            settings: {
+
+                arrows: false,
+            }
+        }]
+    });
+
     // Validate form
 
     var errorMessage = $('.error-message'),

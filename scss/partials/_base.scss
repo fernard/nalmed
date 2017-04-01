@@ -139,32 +139,7 @@ h3 {
     }
 }
 /*Team-members*/
-.photo {
-    @include smallImage;
-    background-image: url('../img/iwona-tomasz.png');
-    background-repeat: no-repeat;
-    background-position: 0;
-    background-size: cover;
-    overflow: hidden;
-    position: relative;
 
-    .photo-overlay {
-        @include posAbsProp(0,0,auto,auto);
-        @include flexProp(column,center,center);
-        @include widthAndHeight(100%,100%);
-        border-radius: 50%;
-        background-color: map-get($mainColors, sea-blue);
-        opacity: 0.8;
-        transform-origin: top left;
-        transition: all 0.4s;
-        transform: rotate(-90deg);
-
-        a {
-            color: white;
-            font-weight: 600;
-        }
-    }
-}
 
 #team {
     .team-member-col {
@@ -173,6 +148,35 @@ h3 {
         &:hover .photo-overlay {
             transform: rotate(0deg);
         }
+
+        .photo {
+            @include smallImage;
+            background-image: url('../img/iwona-tomasz.png');
+            background-repeat: no-repeat;
+            background-position: 0;
+            background-size: cover;
+            overflow: hidden;
+            position: relative;
+
+            .photo-overlay {
+                @include posAbsProp(0,0,auto,auto);
+                @include flexProp(column,center,center);
+                @include widthAndHeight(100%,100%);
+                border-radius: 50%;
+                background-color: map-get($mainColors, sea-blue);
+                opacity: 0.8;
+                transform-origin: top left;
+                transition: all 0.4s;
+                transform: rotate(-90deg);
+
+                a {
+                    color: white;
+                    font-weight: 600;
+                }
+            }
+        }
+
+
     }
 
     .col-md-4 {
@@ -180,9 +184,37 @@ h3 {
             .team-member-col {
                 .photo {
                     background-position: 100%;
-                    
+
                 }
             }
         }
     }
+}
+
+// Opinions
+.opinion-col {
+  @include flexProp(column,center,center);
+
+  .photo {
+      @include smallImage;
+      border-radius: 0;
+      background: url('../img/opinions.png') no-repeat;
+
+    }
+
+    p {
+
+      width: 80%;
+
+      @include breakpoints($media-md) {
+          width: 90%;
+      }
+
+
+    }
+}
+.slick-prev::before,
+.slick-next::before {
+    background-color: map-get($mainColors, sea-blue);
+    font-size: 2rem;
 }
