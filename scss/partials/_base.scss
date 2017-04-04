@@ -145,10 +145,10 @@ h3 {
     .team-member-col {
         text-align: center;
 
-        &:hover .photo-overlay {
+
+        &:hover .photo .photo-overlay {
             transform: rotate(0deg);
         }
-
         .photo {
             @include smallImage;
             background-image: url('../img/iwona-tomasz.png');
@@ -157,6 +157,7 @@ h3 {
             background-size: cover;
             overflow: hidden;
             position: relative;
+
 
             .photo-overlay {
                 @include posAbsProp(0,0,auto,auto);
