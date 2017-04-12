@@ -105,24 +105,24 @@ $media-xl: '(min-width: 1200px)';
 }
 
 html {
-    font-size: 62,5% !important;
+    font-size: 62,5%;
 }
 
 body {
-    font-family: 'Raleway', sans-serif !important;
-    font-size: 1.6rem !important;
-    color: map-get($mainColors, main-font) !important;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.6rem;
+    color: map-get($mainColors, main-font);
     font-weight: 500;
     @include breakpoints($media-xs) {
-        font-size: 1.8rem !important;
+        font-size: 1.8rem;
     }
 }
 
 .preload * {
-    -webkit-transition: none !important;
-    -moz-transition: none !important;
-    -ms-transition: none !important;
-    -o-transition: none !important;
+    -webkit-transition: none;
+    -moz-transition: none;
+    -ms-transition: none;
+    -o-transition: none;
 }
 
 a {
