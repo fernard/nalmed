@@ -4,6 +4,12 @@
     background-color: rgba(255,255,255,0.9);
     border-bottom: 4px solid map-get($mainColors, dark-blue);
 }
+// main menu link effect
+.nav-hover {
+    color: white!important;
+    padding: 10px 5px !important;
+    background-color: map-get($mainColors, dark-blue);
+}
 
 header {
     height: 120px;
@@ -105,9 +111,14 @@ header {
                             transform: translateY(-20%);
                             transition: all 0.5s;
 
-                            li {
+                            > li {
                                 padding: 10px 0;
                                 width: 150px;
+                                transition: 0.4s;
+
+                                &:hover {
+                                    background-color: transparentize(white, 0.8);
+                                }
 
                                 .sub-menu-link {
                                     color: lighten(black, 90);
@@ -115,12 +126,8 @@ header {
                                     transition: all 0.4s;
                                     text-align: center;
                                     display: block;
-
-                                    &:hover {
-                                        color: map-get($mainColors, dark-blue);
-                                        background-color: white;
-                                        padding: 0;
-                                    }
+                                    padding: 0;
+                                    background: transparent;
                                 }
                             }
                         }
@@ -131,8 +138,6 @@ header {
                             opacity: 1;
                             transform: translateY(5%);
                         }
-
-                        
                     }
 
                     a {

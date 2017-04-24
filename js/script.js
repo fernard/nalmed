@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
 
 
@@ -19,6 +18,7 @@ $(document).ready(function() {
             $('header').removeClass('onScroll');
         }
     });
+
 
     // Mobile-Menu Animation
 
@@ -41,25 +41,25 @@ $(document).ready(function() {
         rightArrow = $('.right'),
         slides = $('.slides'),
         sliderWrapper = $('.slider-wrapper');
-        slideImg = $('.slides').find('li'),
+    slideImg = $('.slides').find('li'),
         slideIndex = 1,
         sliderWrapperWidthInitial = sliderWrapper.innerWidth();
-        // Making copies of li elements
-        firstSlideCopy = slideImg.first().clone();
-        lastSlideCopy = slideImg.last().clone();
-        firstSlideCopy.appendTo(slides);
-        lastSlideCopy.prependTo(slides);
-        // Updating array length
-        slideImg = $('.slides').find('li');
+    // Making copies of li elements
+    firstSlideCopy = slideImg.first().clone();
+    lastSlideCopy = slideImg.last().clone();
+    firstSlideCopy.appendTo(slides);
+    lastSlideCopy.prependTo(slides);
+    // Updating array length
+    slideImg = $('.slides').find('li');
 
-        // Setting each li element width
+    // Setting each li element width
 
-        var liWidth = (100 / slideImg.length) + "%";
-        slideImg.css('width', liWidth);
+    var liWidth = (100 / slideImg.length) + "%";
+    slideImg.css('width', liWidth);
 
-        // Handles the sliding width dynamically updated slider wrapper width
+    // Handles the sliding width dynamically updated slider wrapper width
 
-      function launchSlider(sliderWrapperWidth) {
+    function launchSlider(sliderWrapperWidth) {
 
         var slidesWidth = sliderWrapperWidth * slideImg.length;
         slides.css('width', slidesWidth).css('left', (slideIndex * sliderWrapperWidth) * -1);
@@ -67,25 +67,25 @@ $(document).ready(function() {
         $(leftArrow).off().on('click', function() {
             var slideValue = sliderWrapper.innerWidth();
 
-                $(slides).animate({
+            $(slides).animate({
 
-                    left: '+=' + slideValue
+                left: '+=' + slideValue
 
-                }, 500, function() {
+            }, 500, function() {
 
-                  if (slideIndex === 0) {
+                if (slideIndex === 0) {
 
-                      $(slides).animate({
+                    $(slides).animate({
 
                         left: '-=' + slideValue * (slideImg.length - 2),
-                      },0);
+                    }, 0);
 
                     slideIndex = slideImg.length - 2;
 
-                  }
-                });
+                }
+            });
 
-                slideIndex--;
+            slideIndex--;
 
 
 
@@ -96,25 +96,25 @@ $(document).ready(function() {
             var slideValue = sliderWrapper.innerWidth();
 
 
-                $(slides).animate({
+            $(slides).animate({
 
-                    left: '-=' + slideValue
+                left: '-=' + slideValue
 
-                }, 500, function() {
+            }, 500, function() {
 
-                  if (slideIndex === slideImg.length - 1) {
+                if (slideIndex === slideImg.length - 1) {
 
-                    $(slides).animate( {
+                    $(slides).animate({
 
-                      left: '+=' + slideValue * (slideImg.length - 2)
-                    }, 0)
+                        left: '+=' + slideValue * (slideImg.length - 2)
+                    }, 0);
 
                     slideIndex = 1;
 
-                  }
-                });
+                }
+            });
 
-                slideIndex++;
+            slideIndex++;
 
 
 
@@ -132,7 +132,7 @@ $(document).ready(function() {
 
     $(window).on('resize', function() {
 
-          // Slider wrapper width is dynamically updated on each window resize and the function is launched with the new wrapper width as the argument
+        // Slider wrapper width is dynamically updated on each window resize and the function is launched with the new wrapper width as the argument
 
         var windowWidth = $(this).innerWidth(),
             sliderWrapperWidth = sliderWrapper.innerWidth();
@@ -150,7 +150,7 @@ $(document).ready(function() {
 
     // Inline Menu 'slide to sections' animation
     var menuLinks = $('nav').find('li a');
-
+    //
     menuLinks.on('click', function() {
 
         var href = $(this).attr('href');
@@ -169,6 +169,20 @@ $(document).ready(function() {
         }
 
     });
+
+    // Keep submenu style when hovering submenu links
+
+    var subMenuLinksParents = $('nav').find('.sub-menu-link').parent(); // targeting all parent elements of submenu links
+
+    subMenuLinksParents.hover(function() {
+        // targeting only main menu links to keep the hover effect on them while hovering over the submenu
+        $(this).parent().parent().find(">:first-child").addClass('nav-hover');
+
+    }, function() {
+
+        $(this).parent().parent().find(">:first-child").removeClass('nav-hover');
+    });
+
 
     // Handle slick-carousel
 
@@ -241,7 +255,7 @@ $(document).ready(function() {
                 .fail(function(error) {
 
                     console.log(error);
-                })
+                });
         }
 
 
@@ -254,88 +268,88 @@ $(document).ready(function() {
 
     var googleScript = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD5pi56IdWtbcUAqQL8qtkS9QVC38GSHKQ';
 
-      function initMap() {
-          var myLatLng = {
-              lat: 52.1331211,
-              lng: 20.657210299999974
-          };
+    function initMap() {
+        var myLatLng = {
+            lat: 52.1331211,
+            lng: 20.657210299999974
+        };
 
-          var map = new google.maps.Map(document.getElementById('map'), {
-              zoom: 14,
-              center: myLatLng,
-              styles: [{
-                      "featureType": "administrative",
-                      "elementType": "labels.text.fill",
-                      "stylers": [{
-                          "color": "#444444"
-                      }]
-                  },
-                  {
-                      "featureType": "landscape",
-                      "elementType": "all",
-                      "stylers": [{
-                          "color": "#f2f2f2"
-                      }]
-                  },
-                  {
-                      "featureType": "poi",
-                      "elementType": "all",
-                      "stylers": [{
-                          "visibility": "off"
-                      }]
-                  },
-                  {
-                      "featureType": "road",
-                      "elementType": "all",
-                      "stylers": [{
-                              "saturation": -100
-                          },
-                          {
-                              "lightness": 45
-                          }
-                      ]
-                  },
-                  {
-                      "featureType": "road.highway",
-                      "elementType": "all",
-                      "stylers": [{
-                          "visibility": "simplified"
-                      }]
-                  },
-                  {
-                      "featureType": "road.arterial",
-                      "elementType": "labels.icon",
-                      "stylers": [{
-                          "visibility": "off"
-                      }]
-                  },
-                  {
-                      "featureType": "transit",
-                      "elementType": "all",
-                      "stylers": [{
-                          "visibility": "off"
-                      }]
-                  },
-                  {
-                      "featureType": "water",
-                      "elementType": "all",
-                      "stylers": [{
-                              "color": "#46bcec"
-                          },
-                          {
-                              "visibility": "on"
-                          }
-                      ]
-                  }
-              ],
-          });
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 14,
+            center: myLatLng,
+            styles: [{
+                    "featureType": "administrative",
+                    "elementType": "labels.text.fill",
+                    "stylers": [{
+                        "color": "#444444"
+                    }]
+                },
+                {
+                    "featureType": "landscape",
+                    "elementType": "all",
+                    "stylers": [{
+                        "color": "#f2f2f2"
+                    }]
+                },
+                {
+                    "featureType": "poi",
+                    "elementType": "all",
+                    "stylers": [{
+                        "visibility": "off"
+                    }]
+                },
+                {
+                    "featureType": "road",
+                    "elementType": "all",
+                    "stylers": [{
+                            "saturation": -100
+                        },
+                        {
+                            "lightness": 45
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.highway",
+                    "elementType": "all",
+                    "stylers": [{
+                        "visibility": "simplified"
+                    }]
+                },
+                {
+                    "featureType": "road.arterial",
+                    "elementType": "labels.icon",
+                    "stylers": [{
+                        "visibility": "off"
+                    }]
+                },
+                {
+                    "featureType": "transit",
+                    "elementType": "all",
+                    "stylers": [{
+                        "visibility": "off"
+                    }]
+                },
+                {
+                    "featureType": "water",
+                    "elementType": "all",
+                    "stylers": [{
+                            "color": "#46bcec"
+                        },
+                        {
+                            "visibility": "on"
+                        }
+                    ]
+                }
+            ],
+        });
 
-          var marker = new google.maps.Marker({
-              position: myLatLng,
-              map: map,
-              title: 'Centrum Terapii Uzależnień i Zaburzeń Nalmed'
-          });
-      }
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'Centrum Terapii Uzależnień i Zaburzeń Nalmed'
+        });
+    }
 
     $.getScript(googleScript, initMap);
 
