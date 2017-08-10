@@ -250,7 +250,7 @@ $(document).ready(function() {
                     errorMessage.css('backgroundColor', 'green');
                     errorMessage.text('Udało się wysłać wiadomość!');
                     errorMessage.fadeIn('400');
-
+                    form.reset();
                 })
                 .fail(function(error) {
 

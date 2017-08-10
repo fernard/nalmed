@@ -70,23 +70,31 @@ form {
     }
 }
 /*contact-info */
+
+.contact-wrapper, .contact-column {
+  @include flexProp(column, auto, auto);
+  
+}
+
 .contact-wrapper {
-    display: flex;
-    flex-flow: row wrap;
+
+  @include breakpoints($media-sm) {
+    flex-direction: row;
+  };
+}
+.contact-column {
     color: white;
     font-weight: 500;
     margin-top: 2rem;
-    @include breakpoints($media-xs) {
-        flex-flow: column nowrap;
+    width: 100%;
+    @include breakpoints($media-sm) {
+      width: 50%;
     };
 
     .contact-info {
-        width: 50%;
-        text-align: center;
-        @include breakpoints($media-xs) {
-            width: 100%;
-        };
-
+        width: 100%;
+        text-align: left;
+        margin-left: 0;
         &:nth-of-type(2) {
             .contact-thumb {
                 background-position: -54px 0;
@@ -94,9 +102,9 @@ form {
         }
 
         &:last-of-type {
-            margin-left: 25%;
+
             @include breakpoints($media-xs) {
-                margin-left: 0;
+
             };
 
             .contact-thumb {
@@ -115,6 +123,14 @@ form {
 
     p {
         line-height: 3.5rem;
+
+        span {
+
+          color: map-get($mainColors, light-blue);
+          display: block;
+          font-size: 1.2em;
+          font-weight: 700;
+        }
 
         a {
             color: white;

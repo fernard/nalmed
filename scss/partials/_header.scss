@@ -26,10 +26,14 @@ header {
         height: 116px;
         /*Logo*/
         .logo {
-            img {
-                @include widthAndHeight(80%,auto);
+          @include widthAndHeight(346px,88px);
+          a {
+                display: block;
+                @include widthAndHeight(100%, 100%);
+                background: url('../img/logo.png') no-repeat;
+                background-size: 80% auto;
                 @include breakpoints($media-sm) {
-                    width: 100%;
+                    background-size: 100% auto;
                 }
             }
         }
